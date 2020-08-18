@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import logo from './testLogo.png';
 import './App.css';
@@ -7,11 +8,11 @@ import Profile from "./components/profile/Profile";
 
 const App = () => {
   return (
-      <div className='app-wrapper'>
+      <container>
           <Header />
           <Nav />
           <Profile />
-      </div>
+      </container>
   );
 }
 

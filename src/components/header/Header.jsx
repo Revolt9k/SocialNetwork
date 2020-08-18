@@ -1,15 +1,24 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/navbar';
 import React from "react";
-import './Header.css';
+import logo from './users-solid.svg'
+import classes from './Header.module.css'
 
 const Header = () => {
-    return <header className='header'>
-                <img className='imgLogo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Facebook_Messenger_logo.svg/761px-Facebook_Messenger_logo.svg.png" alt=""/>
-                {/*<img className='imgLogo' src="logo.svg" alt=""/>*/}
-                {/*<img className='imgLogo' src="{logo}" alt=""/>*/}
-                {/*<img className='imgLogo' src="./testLogo.png" alt=""/>*/}
-                {/*<img className='imgLogo' src="../src/testLogo.png" alt=""/>*/}
-                {/*<img className='imgLogo' src="D://AK/reactAPP/my-app/src/testLogo.png" alt=""/>*/}
-            </header>
+    return     <Navbar bg="primary" variant="light" className={classes.header} >
+        <Navbar.Brand href="#home">
+            <logo />
+            <img
+                alt="My social network"
+                src={logo}
+                width="100"
+                height="100"
+                className="d-inline-block align-middle "
+            />
+
+        </Navbar.Brand>
+        My social network
+    </Navbar>
 
 }
 
