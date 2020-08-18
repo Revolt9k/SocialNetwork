@@ -1,0 +1,18 @@
+.content {
+    padding: 10px;
+    background-color: #5f75e3;
+    grid-area: c;
+}
+
+.contentImg {
+    max-height: 300px;
+    width: 100%;
+}
+
+.item {
+  color: greenyellow;
+}
+
+.active {
+    font-weight: bold;
+}
