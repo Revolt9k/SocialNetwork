@@ -1,7 +1,46 @@
 .header {
     margin-bottom: 0;
+    border-radius: 20px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    height: 300px;
+    height: 150px;
 }
 
+.inner {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.text {
+    font-family: "Agency FB";
+    font-size: 80px;
+    color: white;
+    padding-left: 30px;
+}
+
+.img {
+    width: 120px;
+    height: 120px;
+    fill: red;
+}
+
+@media (max-width: 1000px) {
+    .text {
+        font-size: 40px;
+    }
+    .img {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 560px) {
+    .text {
+        font-size: 30px;
+    }
+    .img {
+        width: 60px;
+        height: 60px;
+    }
+}

@@ -1,7 +1,6 @@
 .content {
-    padding: 10px;
-    background-color: #5f75e3;
-    grid-area: c;
+    padding: 20px;
+    background-color: #cef3f3;
 }
 
 .contentImg {
@@ -9,10 +8,3 @@
     width: 100%;
 }
 
-.item {
-  color: greenyellow;
-}
-
-.active {
-    font-weight: bold;
-}

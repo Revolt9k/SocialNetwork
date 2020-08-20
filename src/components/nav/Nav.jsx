@@ -1,25 +1,17 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
 import classes from './Nav.module.css'
-
+import NavItem from "./navItem/NavItem";
 
 const Nav = () => {
-    return <div className={classes.nav}>
-        <div className={classes.item}>
-            <a> profile</a>
-        </div>
-        <div className={classes.item}>
-            <a> messagies</a>
-        </div>
-        <div className={classes.item}>
-            <a> news</a>
-        </div>
-        <div className={classes.item}>
-            <a> music</a>
-        </div>
-        <div className={classes.item}>
-            <a> settings</a>
-        </div>
-
+    return <container>
+    <div className={classes.menu}>
+        <NavItem text='profile'/>
+        <NavItem text='messagies'/>
+        <NavItem text='news'/>
+        <NavItem text='music'/>
+        <NavItem text='settings'/>
     </div>
+    </container>
 }
 export default Nav

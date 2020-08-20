@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import logo from './testLogo.png';
 import './App.css';
 import Header from "./components/header/Header";
 import Nav from "./components/nav/Nav";
