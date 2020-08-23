@@ -1,9 +1,66 @@
 .item {
+    background-color: ##337ab7;
     font-size: 20px;
+    padding: 10px 5px;
+    transition: all .2s linear;
+}
+
+
+.item:hover a{
+    color: darkblue;
 }
 
 .link {
     color: aliceblue;
     text-transform: uppercase;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+a{
+    padding: 25px;
+    height: 100%;
+}
 
+a.active{
+    color: darkblue;
+    background-color: #cef3f3;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+
+
+a:hover{
+    text-decoration: none;
+}
+
+@media (max-width: 660px) {
+
+    .item {
+        font-size: 14px;
+    }
+
+}
+@media (max-width: 660px) {
+
+    .item {
+        font-size: 14px;
+    }
+
+    a {
+        padding: 12px;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .item {
+        font-size: 12px;
+    }
+    a {
+        padding: 12px 4px;
+    }
 }

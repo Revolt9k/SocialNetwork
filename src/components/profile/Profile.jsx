@@ -6,11 +6,11 @@ import ava from "./bg.jpg"
 const Profile = () => {
     return <div className={classes.content}>
         <div className='row'>
-            <div className='col-xs-4'>
+            <div className='col-xs-3'>
                 main content
                 <div>ava + description</div>
             </div>
-            <div className='col-xs-8'>
+            <div className='col-xs-9'>
         {/*<img className={classes.contentImg} src={ava} alt=""/>*/}
 
         <MyPosts />

@@ -5,13 +5,15 @@ import NavItem from "./navItem/NavItem";
 
 const Nav = () => {
     return <container>
-    <div className={classes.menu}>
-        <NavItem text='profile'/>
-        <NavItem text='messagies'/>
-        <NavItem text='news'/>
-        <NavItem text='music'/>
-        <NavItem text='settings'/>
-    </div>
+        <nav className={classes.menu}>
+
+            <NavItem text='profile' href="/profile"/>
+            <NavItem text='dialogs' href="/dialogs"/>
+            <NavItem text='news' href="/news"/>
+            <NavItem text='music' href="/music"/>
+            <NavItem text='settings' href="/settings"/>
+
+        </nav>
     </container>
 }
 export default Nav

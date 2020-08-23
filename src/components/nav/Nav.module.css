@@ -1,7 +1,14 @@
 .menu {
     display: flex;
     justify-content: space-between;
-    padding: 10px 80px 10px 25px;
+    padding: 0px;
     background-color: deepskyblue;
 }
 
+
+
+@media (max-width: 560px) {
+    .menu {
+        padding: 0;
+    }
+}

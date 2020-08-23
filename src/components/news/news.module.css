@@ -1,0 +1,18 @@
+.content{
+    padding: 20px;
+    background-color: #cef3f3;
+}
+
+.row {
+    margin: 0;
+}
+
+
+.col {
+    padding: 10px;
+
+}
+
+.feed {
+    text-align: center;
+}
