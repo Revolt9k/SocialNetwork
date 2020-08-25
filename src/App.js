@@ -13,6 +13,8 @@ import DialogsItem from "./components/dialogs/dialogsItem/dialogsItem";
 import Messagies from "./components/dialogs/messagies/messagies";
 import Post from "./components/profile/myPosts/Post/post";
 import classes from "./components/profile/Profile.module.css";
+import state from "./state/state"
+
 
 const App = (props) => {
 
@@ -24,8 +26,8 @@ const App = (props) => {
                 <Header/>
                 <Nav/>
                 <div className='main_content'>
-                    <Route path='/profile' render={ () => <Profile posts={props.posts}/> } />
-                    <Route path='/dialogs' render={ () => <Dialogs dialogs={props.dialogs} messagies={props.messagies}  /> } />
+                    <Route path='/profile' render={ () => <Profile posts={state.profilePage.postsData} friends={state.firends}/> } />
+                    <Route path='/dialogs' render={ () => <Dialogs dialogs={state.dialogsPage.dialogsData} messagies={state.dialogsPage.messagiesData}  /> } />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

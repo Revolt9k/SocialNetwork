@@ -2,8 +2,7 @@ import React from "react";
 import classes from './Profile.module.css';
 import MyPosts from "./myPosts/myPosts";
 import ProfileInfo from "./ProfileInfo/profileInfo";
-import Post from "./myPosts/Post/post";
-
+import Friends from "./friends/friends";
 
 const Profile = (props) => {
 
@@ -13,6 +12,7 @@ const Profile = (props) => {
         <div className='row'>
             <div className='col-xs-3'>
                 <ProfileInfo />
+                <Friends firends={props.friends} />
             </div>
             <div className='col-xs-9'>
 

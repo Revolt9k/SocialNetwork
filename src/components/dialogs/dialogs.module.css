@@ -12,3 +12,36 @@
     padding: 0;
 }
 
+.dialogs {
+    padding: 0 10px;
+    border: 1px solid #337ab7;
+    /*border-left: none;*/
+    border-radius: 55px;
+}
+
+.messagies {
+    border: 1px solid #00bfff;
+    border-radius: 25px;
+    /*border-right: none;*/
+    padding-left: 30px;
+}
+
+
+
+@media (max-width: 480px) {
+    .content{
+        padding: 20px 10px;
+    }
+
+}
+
+@media (max-width: 440px) {
+
+    .content{
+        padding: 20px 5px 20px 0px;
+    }
+    .dialogs {
+        padding: 0 3px;
+    }
+
+}

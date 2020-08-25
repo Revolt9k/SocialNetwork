@@ -1,0 +1,22 @@
+
+
+.img {
+    margin: 10px;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    max-height: 100px;
+    max-width: 100px;
+    min-height: 50px;
+    min-width: 50px;
+}
+
+
+@media (max-width: 850px) {
+    .img {
+        margin: 5px;
+        min-height: 30px;
+        min-width: 30px;
+    }
+
+}
