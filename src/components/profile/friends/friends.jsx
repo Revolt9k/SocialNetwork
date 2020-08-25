@@ -5,16 +5,16 @@ import FriendItem from "./friendItem/friendItem"
 
 const Friends = (props) => {
 
-    let filteredFriends = props.firends
+    let lastOnlineFriends = props.firends
+        .filter(item => item.isOnline == true)
         .map((friend) => <FriendItem avaUrl={friend.avaUrl} />)
         .splice(0,8)
+
 
     return <div>
         <h4 className={classes.onlinetext}>Friends Online</h4>
         <div className={classes.friendZoneLoL}>
-
-            {filteredFriends}
-
+            {lastOnlineFriends}
 
         </div>
 
