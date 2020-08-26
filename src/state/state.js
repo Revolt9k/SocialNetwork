@@ -1,3 +1,5 @@
+import {rerenderAllTree} from "../render";
+
 let state = {
     dialogsPage : {
         dialogsData : [
@@ -8,22 +10,22 @@ let state = {
             {id: 5, name: "Valeria", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2826.jpg"}
         ],
         messagiesData : [
-            {id: 1, message: "Dialog with current user", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg"},
-            {id: 2, message: "hey", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2713.jpg"},
-            {id: 3, message: "you", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg"},
-            {id: 4, message: "you", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg"},
-            {id: 5, message: "hey", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2826.jpg"}
+            {id: 1, message: "Hi boyyy", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg", fromMe:true},
+            {id: 2, message: "Yo Bro. How is your React learning? ", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2713.jpg"},
+            {id: 3, message: "Yep", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg", fromMe:true},
+            {id: 4, message: "Still taking all your time? :)", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg"},
+            {id: 5, message: "But now i can talk to you here :)", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2826.jpg", fromMe:true}
         ]
     },
     profilePage : {
         postsData : [
             {id: 1, message: "how are you", author:'good boy', avaUrl: "https://upload.wikimedia.org/wikipedia/ru/thumb/d/da/%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80_3.jpg/210px-%D0%90%D0%B2%D0%B0%D1%82%D0%B0%D1%80_3.jpg"},
-            {id: 2, message: "come on baby",author:'random boy', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg"},
+            {id: 2, message: "learning react",author:'You', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg"},
             {id: 3, message: "what?", author:'random boy', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar3017.jpg"},
-            {id: 4, message: "learning react", author:'random boy', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg"},
-            {id: 5, message: "right now",author:'random boy', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar3141.jpg"},
+            {id: 4, message: "come on baby", author:'random boy', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg"},
+            {id: 5, message: "right now",author:'random girl', avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar3141.jpg"},
             {id: 6, message: "hey ho", author:'random boy',avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar449.jpg"},
-            {id: 7, message: "hey ho", author:'random boy',avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1449.jpg"}
+            {id: 7, message: "hey ho howdi ho", author:'random boy',avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1449.jpg"}
         ]
     },
     firends : [
@@ -44,5 +46,41 @@ let state = {
     ]
 
 }
+
+
+export let addPost =  (postMessage) => {
+    let newPost = {
+        id: "i",
+        message: postMessage,
+        author: "You",
+        avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg"
+
+    };
+
+    state.profilePage.postsData.unshift(newPost)
+    rerenderAllTree()
+
+}
+
+export let removePost = () => {
+
+    state.profilePage.postsData.splice(0, 1)
+    rerenderAllTree()
+}
+
+export let sendMessage = (sendMessage) => {
+    let sendedMessage = {
+
+        id: "i",
+        message: sendMessage,
+        imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
+        fromMe:true
+
+    }
+
+    state.dialogsPage.messagiesData.push(sendedMessage)
+    rerenderAllTree()
+}
+
 
 export default state;

@@ -1,11 +1,13 @@
 import React from "react";
-import classes from "./messagies.module.css"
+import classes from "./myMessagies.module.css"
 
 
 
-const messagies = (props) => {
+const myMessagies = (props) => {
     return <div className={classes.content}>
             <div className={classes.name}>{props.message}</div>
+
         </div>
+
 }
-    export default messagies
+    export default myMessagies

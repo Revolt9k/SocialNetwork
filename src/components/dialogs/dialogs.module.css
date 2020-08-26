@@ -20,10 +20,44 @@
 }
 
 .messagies {
+    font-size: 20px;
     border: 1px solid #00bfff;
     border-radius: 25px;
     /*border-right: none;*/
     padding-left: 30px;
+}
+
+.friend {
+    display: flex;
+    justify-content: flex-start;
+    margin: 15px 20px 15px 0;
+}
+
+.textzone {
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+    margin-left: 0;
+}
+
+.textarea {
+    width: 100%;
+    height: 70px;
+    resize: none;
+}
+
+.sendButton {
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 5px;
+    background-color: #92ffee;
+    transition: all .8s linear;
+}
+
+
+
+.sendButton:hover {
+    background-color: #92ffb9;
 }
 
 

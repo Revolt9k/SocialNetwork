@@ -19,6 +19,26 @@
 }
 
 .button {
+    border-radius: 5px;
     padding: 10px;
     margin-left: 5px;
+    transition: all .8s linear;
+}
+
+.buttonAdd {
+    background-color: #92ffee;
+}
+
+.buttonAdd:hover {
+    background-color: #92ffb9;
+}
+
+.buttonRemove {
+    background-color: #ffcfd1;
+}
+
+
+
+.buttonRemove:hover {
+    background-color: #faa8ac;
 }

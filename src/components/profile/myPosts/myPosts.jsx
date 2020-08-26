@@ -3,7 +3,6 @@ import classes from './myPosts.module.css';
 import Post from './Post/post'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
-import ListGroup from "react-bootstrap/ListGroup";
 
 
 
@@ -12,12 +11,29 @@ const MyPosts = (props) => {
 
     let mappedPosts = props.posts.map((post) => <Post className={classes.item} message={post.message} author={post.author}  avaUrl={post.avaUrl}/> )
 
+    let newPostRef = React.createRef()
+
+    let addPost = () => {
+        let text = newPostRef.current.value
+        if (text!=false) {
+            props.addPost(text)
+            newPostRef.current.value = " "
+        } else {
+            alert("You must type some!")
+        }
+
+    }
+
+    let removeLastPost = () => {
+        props.removePost()
+    }
+
     return <container>
 
             <div className={classes.textzone}>
-                <textarea className={classes.textarea} name="" id="" ></textarea>
-                <button className={classes.button}>Add post</button>
-                <button className={classes.button}>Remove</button>
+                <textarea  className={classes.textarea} ref={newPostRef}  ></textarea>
+                <button onClick={addPost} className={classes.button + " " + classes.buttonAdd}>Add post</button>
+                <button onClick={removeLastPost} className={classes.button + " " +  classes.buttonRemove}>Remove Last post</button>
             </div>
         {mappedPosts}
 

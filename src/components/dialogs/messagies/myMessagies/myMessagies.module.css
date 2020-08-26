@@ -1,11 +1,12 @@
 .content {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
     margin:  15px 0 15px 0;
     height: 100px;
     transition: all .2s linear;
 }
+
 
 
 @media (max-width: 700px) {

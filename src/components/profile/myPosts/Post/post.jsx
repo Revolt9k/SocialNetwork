@@ -7,7 +7,7 @@ const Post = (props) => {
         <div className={classes.item}>
 
             <img src={props.avaUrl}  alt=""/>
-            {props.author}
+            {props.author} :
         <div className={classes.message}>{props.message}</div>
         </div>
     </div>
