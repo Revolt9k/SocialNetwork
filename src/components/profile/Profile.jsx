@@ -16,7 +16,7 @@ const Profile = (props) => {
             </div>
             <div className='col-xs-9'>
 
-                <MyPosts posts={props.posts} addPost={props.addPost} removePost={props.removePost}/>
+                <MyPosts posts={props.posts} addPost={props.addPost} removePost={props.removePost} newPostText={props.newPostText} changePost={props.changePost}/>
             </div>
         </div>
     </div>

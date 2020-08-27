@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap-theme.min.css';
 
 
 
-
 const MyPosts = (props) => {
 
     let mappedPosts = props.posts.map((post) => <Post className={classes.item} message={post.message} author={post.author}  avaUrl={post.avaUrl}/> )
@@ -14,10 +13,9 @@ const MyPosts = (props) => {
     let newPostRef = React.createRef()
 
     let addPost = () => {
-        let text = newPostRef.current.value
-        if (text!=false) {
-            props.addPost(text)
-            newPostRef.current.value = " "
+        if (props.newPostText!=false) {
+            props.addPost()
+
         } else {
             alert("You must type some!")
         }
@@ -28,10 +26,15 @@ const MyPosts = (props) => {
         props.removePost()
     }
 
+    let onPostChange = () => {
+        let text = newPostRef.current.value
+        props.changePost(text)
+    }
+
     return <container>
 
             <div className={classes.textzone}>
-                <textarea  className={classes.textarea} ref={newPostRef}  ></textarea>
+                <textarea  onChange={onPostChange} className={classes.textarea} ref={newPostRef} value={props.newPostText} ></textarea>
                 <button onClick={addPost} className={classes.button + " " + classes.buttonAdd}>Add post</button>
                 <button onClick={removeLastPost} className={classes.button + " " +  classes.buttonRemove}>Remove Last post</button>
             </div>
