@@ -2,7 +2,6 @@ import React from "react";
 import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
-import {sendMessage} from "../../state/state";
 
 
 const dialogs = (props) => {
@@ -23,14 +22,17 @@ const dialogs = (props) => {
     let sendMessageRef = React.createRef()
 
     let localSendMessage = () => {
-        let text = sendMessageRef.current.value
-        if (text!=false) {
-            sendMessage(text)
+
+        if (props.newMessageText!=false) {
+            props.sendMessage()
         } else {
             alert("Type some first")
         }
+    }
 
-        sendMessageRef.current.value = " "
+    let onMessageChange = () => {
+        let text = sendMessageRef.current.value
+        props.changeMessage(text)
     }
 
     return <div className={classes.content}>
@@ -47,7 +49,7 @@ const dialogs = (props) => {
                 {friendMessagies}
                 {myMessagies}
 
-                <div className={classes.textzone}><textarea ref={sendMessageRef} className={classes.textarea}></textarea> <button  onClick={localSendMessage} className={classes.sendButton}>send</button> </div>
+                <div className={classes.textzone}><textarea  onChange={onMessageChange} ref={sendMessageRef} className={classes.textarea} value={props.newMessageText}></textarea> <button  onClick={localSendMessage} className={classes.sendButton}>send</button> </div>
 
 
             </div>

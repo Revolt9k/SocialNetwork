@@ -24,7 +24,7 @@ const App = (props) => {
                 <div className='main_content'>
                     <Route exact path={'/'}  render={ () => <Profile posts={props.state.profilePage.postsData} friends={props.state.firends} addPost={props.addPost} removePost={props.removePost}/> } />
                     <Route path='/profile' render={ () => <Profile posts={props.state.profilePage.postsData} friends={props.state.firends} addPost={props.addPost} removePost={props.removePost} newPostText={props.state.profilePage.newPostTextValue} changePost={props.changePost} /> } />
-                    <Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.dialogsPage.dialogsData} messagies={props.state.dialogsPage.messagiesData}  sendMessage={props.sendMessage}/> } />
+                    <Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.dialogsPage.dialogsData} messagies={props.state.dialogsPage.messagiesData}  sendMessage={props.sendMessage} newMessageText={props.state.dialogsPage.newMessageTextValue} changeMessage={props.changeMessage}/> } />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
