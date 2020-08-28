@@ -12,7 +12,7 @@ const Header = () => {
                 src={logo}
                 className={classes.img}
             />
-            <navitem className={classes.text}>Welcome to my social Network</navitem>
+            <navitem className={classes.text}>Social Network</navitem>
         </Navbar.Brand>
 
     </Navbar>

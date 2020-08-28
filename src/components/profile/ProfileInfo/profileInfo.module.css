@@ -3,3 +3,63 @@
     height: 100%;
     border-radius: 10px;
 }
+.row {
+    margin: 15px 0;
+}
+
+.key {
+    padding: 0;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.value {
+    padding: 0;
+
+    font-size: 18px;
+}
+
+
+@media (max-width: 1300px) {
+    .key {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .value {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1135px) {
+    .key {
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .value {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 935px) {
+    .key {
+        font-weight: 700;
+        font-size: 12px;
+    }
+
+    .value {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 680px) {
+    .key {
+        font-weight: 700;
+        font-size: 8px;
+    }
+
+    .value {
+        font-size: 8px;
+    }
+}
