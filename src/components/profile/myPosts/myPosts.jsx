@@ -14,8 +14,7 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         if (props.newPostText!=false) {
-            props.addPost()
-
+            props.dispatch({type: 'addPost'})
         } else {
             alert("You must type some!")
         }
@@ -23,12 +22,12 @@ const MyPosts = (props) => {
     }
 
     let removeLastPost = () => {
-        props.removePost()
+        props.dispatch({type: 'removePost'})
     }
 
     let onPostChange = () => {
         let text = newPostRef.current.value
-        props.changePost(text)
+        props.dispatch({type: 'changePost', text: text })
     }
 
     return <container>

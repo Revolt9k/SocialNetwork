@@ -22,9 +22,9 @@ const App = (props) => {
                 <Header/>
                 <Nav/>
                 <div className='main_content'>
-                    <Route exact path={'/'}  render={ () => <Profile posts={props.state.profilePage.postsData} friends={props.state.firends} addPost={props.addPost} removePost={props.removePost}/> } />
-                    <Route path='/profile' render={ () => <Profile posts={props.state.profilePage.postsData} friends={props.state.firends} addPost={props.addPost} removePost={props.removePost} newPostText={props.state.profilePage.newPostTextValue} changePost={props.changePost} /> } />
-                    <Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.dialogsPage.dialogsData} messagies={props.state.dialogsPage.messagiesData}  sendMessage={props.sendMessage} newMessageText={props.state.dialogsPage.newMessageTextValue} changeMessage={props.changeMessage}/> } />
+                    <Route exact path={'/'}  render={ () => <Profile posts={props.state.profilePage.postsData} friends={props.state.firends} dispatch={props.dispatch} /> } />
+                    <Route path='/profile' render={ () => <Profile posts={props.state.profilePage.postsData} friends={props.state.firends} dispatch={props.dispatch} newPostText={props.state.profilePage.newPostTextValue}  /> } />
+                    <Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.dialogsPage.dialogsData} messagies={props.state.dialogsPage.messagiesData}  dispatch={props.dispatch} newMessageText={props.state.dialogsPage.newMessageTextValue}/> } />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>

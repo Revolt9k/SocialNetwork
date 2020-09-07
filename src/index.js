@@ -16,10 +16,10 @@ let rerenderAllTree = () => {
     ReactDOM.render(
         <React.StrictMode>
             <App state={store._state}
-                 addPost={store.addPost.bind(store)}
-                 removePost={store.removePost.bind(store)}
-                 sendMessage={store.sendMessage.bind(store)}
-                 changePost={store.changePost.bind(store)}
+                 dispatch={store.dispatch.bind(store)}
+                 // removePost={store.removePost.bind(store)}
+                 // sendMessage={store.sendMessage.bind(store)}
+                 // changePost={store.changePost.bind(store)}
                  changeMessage={store.changeMessage.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')

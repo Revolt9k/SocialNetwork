@@ -48,56 +48,53 @@ let store = {
         ],
 
     },
-    getState(){
-        debugger;
-        return this._state
-    },
-    callSubscriber() {
+    _callSubscriber() {
         console.log("state was changed")
     },
-    addPost() {
-        let newPost = {
-            id: "i",
-            message: this._state.profilePage.newPostTextValue,
-            author: "You",
-            avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
-
-        };
-        this._state.profilePage.postsData.unshift(newPost)
-        this.changePost("")
-        this.callSubscriber()
-    },
-    removePost() {
-
-        this._state.profilePage.postsData.splice(0, 1)
-        this.callSubscriber()
-    },
-    sendMessage(sendMessage) {
-        let sendedMessage = {
-
-            id: "i",
-            message: this._state.dialogsPage.newMessageTextValue,
-            imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
-            fromMe:true
-
-        }
-
-        this._state.dialogsPage.messagiesData.push(sendedMessage)
-        this.changeMessage("")
-        this.callSubscriber()
-    },
-    changePost(text) {
-        this._state.profilePage.newPostTextValue = text;
-        this.callSubscriber()
-    },
-    changeMessage(text) {
-        this._state.dialogsPage.newMessageTextValue = text;
-        this.callSubscriber()
-
+    getState(){
+        return this._state
     },
     subscribe(observer) {
-        this.callSubscriber = observer;
-    }
+        this._callSubscriber = observer;
+    },
+    dispatch(action) { // { must have -> type: 'addPost'}
+
+        if (action.type === 'addPost') {
+            let newPost = {
+                id: "i",
+                message: this._state.profilePage.newPostTextValue,
+                author: "You",
+                avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
+
+            };
+            this._state.profilePage.postsData.unshift(newPost)
+            this._state.profilePage.newPostTextValue = ""
+            this._callSubscriber()
+        } else if (action.type === 'changePost') {
+            this._state.profilePage.newPostTextValue = action.text;
+            this._callSubscriber()
+        } else if (action.type === 'removePost') {
+            this._state.profilePage.postsData.splice(0, 1)
+            this._callSubscriber()
+        } else if (action.type === 'sendMessage') {
+            let sendedMessage = {
+
+                id: "i",
+                message: this._state.dialogsPage.newMessageTextValue,
+                imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
+                fromMe:true
+
+            }
+
+            this._state.dialogsPage.messagiesData.push(sendedMessage)
+            this._state.dialogsPage.newMessageTextValue = "";
+            this._callSubscriber()
+        } else if (action.type === 'changeMessage') {
+            this._state.dialogsPage.newMessageTextValue = action.text;
+            this._callSubscriber()
+        }
+    },
+
 }
 
 

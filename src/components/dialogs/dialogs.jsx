@@ -24,7 +24,7 @@ const dialogs = (props) => {
     let localSendMessage = () => {
 
         if (props.newMessageText!=false) {
-            props.sendMessage()
+            props.dispatch({type: 'sendMessage'})
         } else {
             alert("Type some first")
         }
@@ -32,7 +32,7 @@ const dialogs = (props) => {
 
     let onMessageChange = () => {
         let text = sendMessageRef.current.value
-        props.changeMessage(text)
+        props.dispatch({type: 'changeMessage', text:text})
     }
 
     return <div className={classes.content}>
