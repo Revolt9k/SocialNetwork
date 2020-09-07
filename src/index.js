@@ -17,10 +17,7 @@ let rerenderAllTree = () => {
         <React.StrictMode>
             <App state={store._state}
                  dispatch={store.dispatch.bind(store)}
-                 // removePost={store.removePost.bind(store)}
-                 // sendMessage={store.sendMessage.bind(store)}
-                 // changePost={store.changePost.bind(store)}
-                 changeMessage={store.changeMessage.bind(store)}/>
+            />
         </React.StrictMode>,
         document.getElementById('root')
     );
