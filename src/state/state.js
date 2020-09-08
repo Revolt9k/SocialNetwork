@@ -1,3 +1,9 @@
+const addPost = 'addPost';
+const changePost = 'changePost';
+const sendMessage = 'sendMessage';
+const changeMessage = 'changeMessage';
+const removePost = 'removePost';
+
 let store = {
     _state: {
         dialogsPage : {
@@ -59,7 +65,7 @@ let store = {
     },
     dispatch(action) { // { must have -> type: 'addPost'}
 
-        if (action.type === 'addPost') {
+        if (action.type === addPost) {
             let newPost = {
                 id: "i",
                 message: this._state.profilePage.newPostTextValue,
@@ -70,13 +76,13 @@ let store = {
             this._state.profilePage.postsData.unshift(newPost)
             this._state.profilePage.newPostTextValue = ""
             this._callSubscriber()
-        } else if (action.type === 'changePost') {
+        } else if (action.type === changePost) {
             this._state.profilePage.newPostTextValue = action.text;
             this._callSubscriber()
-        } else if (action.type === 'removePost') {
+        } else if (action.type === removePost) {
             this._state.profilePage.postsData.splice(0, 1)
             this._callSubscriber()
-        } else if (action.type === 'sendMessage') {
+        } else if (action.type === sendMessage) {
             let sendedMessage = {
 
                 id: "i",
@@ -89,13 +95,26 @@ let store = {
             this._state.dialogsPage.messagiesData.push(sendedMessage)
             this._state.dialogsPage.newMessageTextValue = "";
             this._callSubscriber()
-        } else if (action.type === 'changeMessage') {
+        } else if (action.type === changeMessage) {
             this._state.dialogsPage.newMessageTextValue = action.text;
             this._callSubscriber()
         }
     },
 
 }
+
+
+export const addPostActionCreator = () => ( {type: addPost} )
+
+export const onPostChangeActionCreator = (text) =>  ( {type: changePost, text: text} )
+
+export const removePostActionCreator = () => ({type: removePost})
+
+export const sendMessageActionCreator = () => ( {type: sendMessage} )
+
+export const onMessageChangeActionCreator = (text) =>  ( {type: changeMessage, text:text} )
+
+
 
 
 

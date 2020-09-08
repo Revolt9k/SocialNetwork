@@ -3,6 +3,7 @@ import classes from './myPosts.module.css';
 import Post from './Post/post'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
+import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../state/state";
 
 
 
@@ -14,20 +15,19 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         if (props.newPostText!=false) {
-            props.dispatch({type: 'addPost'})
+            props.dispatch(addPostActionCreator())
         } else {
             alert("You must type some!")
         }
-
     }
 
     let removeLastPost = () => {
-        props.dispatch({type: 'removePost'})
+        props.dispatch(removePostActionCreator())
     }
 
     let onPostChange = () => {
         let text = newPostRef.current.value
-        props.dispatch({type: 'changePost', text: text })
+        props.dispatch(onPostChangeActionCreator(text))
     }
 
     return <container>

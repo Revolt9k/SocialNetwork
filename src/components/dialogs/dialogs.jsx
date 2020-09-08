@@ -2,6 +2,9 @@ import React from "react";
 import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
+import {onMessageChangeActionCreator, sendMessageActionCreator} from "../../state/state";
+
+
 
 
 const dialogs = (props) => {
@@ -24,7 +27,7 @@ const dialogs = (props) => {
     let localSendMessage = () => {
 
         if (props.newMessageText!=false) {
-            props.dispatch({type: 'sendMessage'})
+            props.dispatch(sendMessageActionCreator())
         } else {
             alert("Type some first")
         }
@@ -32,7 +35,7 @@ const dialogs = (props) => {
 
     let onMessageChange = () => {
         let text = sendMessageRef.current.value
-        props.dispatch({type: 'changeMessage', text:text})
+        props.dispatch(onMessageChangeActionCreator(text))
     }
 
     return <div className={classes.content}>
