@@ -6,28 +6,21 @@ import * as serviceWorker from './serviceWorker';
 import ReactDOM from "react-dom";
 import App from "./App";
 import store from "./state/state";
+import {BrowserRouter} from "react-router-dom";
 
-
-
-
-
-
-let rerenderAllTree = () => {
+let rerenderAllTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={store._state}
-                 dispatch={store.dispatch.bind(store)}
-            />
+            <BrowserRouter>
+              <App state={store._state} dispatch={store.dispatch.bind(store)} />
+            </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-rerenderAllTree()
+rerenderAllTree(store.getState())
 
 store.subscribe(rerenderAllTree)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register();

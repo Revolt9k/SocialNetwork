@@ -17,7 +17,6 @@ const App = (props) => {
 
 
     return (
-        <BrowserRouter>
             <container>
                 <Header/>
                 <Nav/>
@@ -30,7 +29,6 @@ const App = (props) => {
                     <Route path='/settings' component={Settings}/>
                 </div>
             </container>
-        </BrowserRouter>
     );
 }
 
