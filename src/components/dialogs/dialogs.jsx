@@ -2,7 +2,7 @@ import React from "react";
 import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
-import {onMessageChangeActionCreator, sendMessageActionCreator} from "../../state/state";
+import {onMessageChangeActionCreator, sendMessageActionCreator} from "../../state/dialogsReducer";
 
 
 

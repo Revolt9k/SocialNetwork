@@ -3,7 +3,7 @@ import classes from './myPosts.module.css';
 import Post from './Post/post'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
-import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../state/state";
+import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../state/profileReducer";
 
 
 

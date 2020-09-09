@@ -1,8 +1,7 @@
-const addPost = 'addPost';
-const changePost = 'changePost';
-const sendMessage = 'sendMessage';
-const changeMessage = 'changeMessage';
-const removePost = 'removePost';
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import friendsReducer from "./friendsReducer";
+
 
 let store = {
     _state: {
@@ -63,59 +62,16 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-    dispatch(action) { // { must have -> type: 'addPost'}
+    dispatch(action) {
 
-        if (action.type === addPost) {
-            let newPost = {
-                id: "i",
-                message: this._state.profilePage.newPostTextValue,
-                author: "You",
-                avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.firends = friendsReducer(this._state.firends, action);
+        this._callSubscriber()
 
-            };
-            this._state.profilePage.postsData.unshift(newPost)
-            this._state.profilePage.newPostTextValue = ""
-            this._callSubscriber()
-        } else if (action.type === changePost) {
-            this._state.profilePage.newPostTextValue = action.text;
-            this._callSubscriber()
-        } else if (action.type === removePost) {
-            this._state.profilePage.postsData.splice(0, 1)
-            this._callSubscriber()
-        } else if (action.type === sendMessage) {
-            let sendedMessage = {
-
-                id: "i",
-                message: this._state.dialogsPage.newMessageTextValue,
-                imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
-                fromMe:true
-
-            }
-
-            this._state.dialogsPage.messagiesData.push(sendedMessage)
-            this._state.dialogsPage.newMessageTextValue = "";
-            this._callSubscriber()
-        } else if (action.type === changeMessage) {
-            this._state.dialogsPage.newMessageTextValue = action.text;
-            this._callSubscriber()
-        }
     },
 
 }
-
-
-export const addPostActionCreator = () => ( {type: addPost} )
-
-export const onPostChangeActionCreator = (text) =>  ( {type: changePost, text: text} )
-
-export const removePostActionCreator = () => ({type: removePost})
-
-export const sendMessageActionCreator = () => ( {type: sendMessage} )
-
-export const onMessageChangeActionCreator = (text) =>  ( {type: changeMessage, text:text} )
-
-
-
 
 
 export default store;
