@@ -4,8 +4,9 @@ import FriendItem from "./friendItem/friendItem"
 
 
 const Friends = (props) => {
+debugger;
 
-    let lastOnlineFriends = props.firends
+    let lastOnlineFriends = props.firends.firends
         .filter(item => item.isOnline === true)
         .map((friend) => <FriendItem avaUrl={friend.avaUrl} />)
         .splice(0,8)
