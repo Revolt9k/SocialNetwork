@@ -1,8 +1,8 @@
 import React from "react";
 import classes from './Profile.module.css';
-import MyPosts from "./myPosts/myPosts";
 import ProfileInfo from "./ProfileInfo/profileInfo";
 import Friends from "./friends/friends";
+import MyPostsContainer from "./myPosts/myPostsContainer";
 
 const Profile = (props) => {
 
@@ -15,8 +15,7 @@ const Profile = (props) => {
                 <Friends firends={props.friends} />
             </div>
             <div className='col-xs-9'>
-
-                <MyPosts posts={props.posts} dispatch={props.dispatch}  newPostText={props.newPostText}/>
+                <MyPostsContainer /*posts={props.posts} dispatch={props.dispatch}  newPostText={props.newPostText}*/ store={props.store}/>
             </div>
         </div>
     </div>

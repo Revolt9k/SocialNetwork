@@ -3,7 +3,6 @@ import classes from './myPosts.module.css';
 import Post from './Post/post'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
-import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../Redux/profileReducer";
 
 
 
@@ -14,20 +13,16 @@ const MyPosts = (props) => {
     let newPostRef = React.createRef()
 
     let addPost = () => {
-        if (props.newPostText!=false) {
-            props.dispatch(addPostActionCreator())
-        } else {
-            alert("You must type some!")
-        }
+        props.addPost()
     }
 
     let removeLastPost = () => {
-        props.dispatch(removePostActionCreator())
+        props.removeLastPost()
     }
 
     let onPostChange = () => {
         let text = newPostRef.current.value
-        props.dispatch(onPostChangeActionCreator(text))
+        props.onPostChange(text)
     }
 
     return <container>
@@ -37,8 +32,8 @@ const MyPosts = (props) => {
                 <button onClick={addPost} className={classes.button + " " + classes.buttonAdd}>Add post</button>
                 <button onClick={removeLastPost} className={classes.button + " " +  classes.buttonRemove}>Remove Last post</button>
             </div>
-        {mappedPosts}
 
+        {mappedPosts}
 
     </container>
 }
