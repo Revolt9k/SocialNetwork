@@ -1,5 +1,5 @@
 let initialState = {
-    firends : [
+    friendsList : [
         {id: 1, avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar3333.jpg", isOnline: true},
         {id: 2, avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg", isOnline: false},
         {id: 3, avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar2217.jpg", isOnline: true},

@@ -1,8 +1,8 @@
 import React from "react";
 import classes from './Profile.module.css';
 import ProfileInfo from "./ProfileInfo/profileInfo";
-import Friends from "./friends/friends";
 import MyPostsContainer from "./myPosts/myPostsContainer";
+import FriendsContainer from "./friends/friendsContainer";
 
 const Profile = (props) => {
 
@@ -12,7 +12,7 @@ const Profile = (props) => {
         <div className='row'>
             <div className='col-xs-3'>
                 <ProfileInfo />
-                <Friends firends={props.friends} />
+                <FriendsContainer store={props.store} />
             </div>
             <div className='col-xs-9'>
                 <MyPostsContainer  store={props.store}/>

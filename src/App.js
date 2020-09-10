@@ -19,8 +19,8 @@ const App = (props) => {
                 <Header/>
                 <Nav/>
                 <div className='main_content'>
-                    <Route exact path={'/'}  render={ () => <Profile store={props.store} friends={props.state.firends} /> } />
-                    <Route path='/profile' render={ () => <Profile store={props.store}  friends={props.state.firends}  /> } />
+                    <Route exact path={'/'}  render={ () => <Profile store={props.store} /> } />
+                    <Route path='/profile' render={ () => <Profile store={props.store} /> } />
                     <Route path='/dialogs' render={ () => <DialogsContainer store={props.store} /> } />
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
