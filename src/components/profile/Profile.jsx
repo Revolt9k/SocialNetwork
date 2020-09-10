@@ -15,7 +15,7 @@ const Profile = (props) => {
                 <Friends firends={props.friends} />
             </div>
             <div className='col-xs-9'>
-                <MyPostsContainer /*posts={props.posts} dispatch={props.dispatch}  newPostText={props.newPostText}*/ store={props.store}/>
+                <MyPostsContainer  store={props.store}/>
             </div>
         </div>
     </div>

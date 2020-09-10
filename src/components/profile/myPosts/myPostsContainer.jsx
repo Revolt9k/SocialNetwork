@@ -10,7 +10,7 @@ const MyPostsContainer = (props) => {
     let state = props.store.getState()
 
     let addPost = () => {
-        if (props.newPostText!=false) {
+        if (state.profilePage.newPostTextValue!=false) {
             props.store.dispatch(addPostActionCreator())
         } else {
             alert("You must type some!")
@@ -25,7 +25,11 @@ const MyPostsContainer = (props) => {
         props.store.dispatch(onPostChangeActionCreator(text))
     }
 
-    return <MyPosts addPost={addPost} onPostChange={onPostChange} removeLastPost={removeLastPost}  posts={state.profilePage.postsData} newPostText={state.profilePage.newPostTextValue}/>
+    return <MyPosts addPost={addPost}
+                    onPostChange={onPostChange}
+                    removeLastPost={removeLastPost}
+                    posts={state.profilePage.postsData}
+                    newPostText={state.profilePage.newPostTextValue}/>
 }
 
 
