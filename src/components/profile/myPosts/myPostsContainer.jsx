@@ -3,45 +3,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
 import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../Redux/profileReducer";
 import MyPosts from "./myPosts";
-import StoreContext from "../../../storeContext";
+import {connect} from "react-redux";
 
-
-const MyPostsContainer = () => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-
-                    let state = store.getState()
-
-                    let addPost = () => {
-                        if (state.profilePage.newPostTextValue != false) {
-                            store.dispatch(addPostActionCreator())
-                        } else {
-                            alert("You must type some!")
-                        }
-                    }
-
-                    let removeLastPost = () => {
-                        store.dispatch(removePostActionCreator())
-                    }
-
-                    let onPostChange = (text) => {
-                        store.dispatch(onPostChangeActionCreator(text))
-                    }
-                    debugger;
-                    return <MyPosts addPost={addPost}
-                                    onPostChange={onPostChange}
-                                    removeLastPost={removeLastPost}
-                                    posts={state.profilePage.postsData}
-                                    newPostText={state.profilePage.newPostTextValue}/>
-
-                }
-            }
-        </StoreContext.Consumer>
-    )
+let mapStateToProps = (state) => {
+    return {
+        posts: state.profilePage.postsData,
+        newPostText: state.profilePage.newPostTextValue
+    }
 }
 
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostActionCreator())
+        } ,
+        removeLastPost: () => {
+            dispatch(removePostActionCreator())
+        },
+        onPostChange: (text) => {
+            dispatch(onPostChangeActionCreator(text))
+        }
+    }
+}
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer

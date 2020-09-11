@@ -3,7 +3,6 @@ import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
 
-
 const Dialogs = (props) => {
 
     let mappedDialogs = props.dialogs

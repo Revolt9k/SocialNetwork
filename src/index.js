@@ -7,26 +7,19 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import store from "./Redux/reduxStore";
 import {BrowserRouter} from "react-router-dom";
-import StoreContext from "./storeContext";
+import {Provider} from "react-redux"
 
-let rerenderAllTree = (state) => {
-    ReactDOM.render(
-        <React.StrictMode>
-            <BrowserRouter>
-                <StoreContext.Provider value={store}>
-                    <App />
-                </StoreContext.Provider>
-            </BrowserRouter>
-        </React.StrictMode>,
-        document.getElementById('root')
-    );
-}
 
-rerenderAllTree(store.getState())
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
+);
 
-store.subscribe(() => {
-    let state = store.getState()
-    rerenderAllTree(state)
-})
 
 serviceWorker.register();

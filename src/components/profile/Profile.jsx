@@ -4,7 +4,7 @@ import ProfileInfo from "./ProfileInfo/profileInfo";
 import MyPostsContainer from "./myPosts/myPostsContainer";
 import FriendsContainer from "./friends/friendsContainer";
 
-const Profile = (props) => {
+const Profile = () => {
 
 
 
