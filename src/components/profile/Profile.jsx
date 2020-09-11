@@ -12,10 +12,10 @@ const Profile = (props) => {
         <div className='row'>
             <div className='col-xs-3'>
                 <ProfileInfo />
-                <FriendsContainer store={props.store} />
+                <FriendsContainer />
             </div>
             <div className='col-xs-9'>
-                <MyPostsContainer  store={props.store}/>
+                <MyPostsContainer  />
             </div>
         </div>
     </div>

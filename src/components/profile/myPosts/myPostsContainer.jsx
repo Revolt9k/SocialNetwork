@@ -3,33 +3,44 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
 import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../Redux/profileReducer";
 import MyPosts from "./myPosts";
+import StoreContext from "../../../storeContext";
 
 
-const MyPostsContainer = (props) => {
+const MyPostsContainer = () => {
 
-    let state = props.store.getState()
+    return (
+        <StoreContext.Consumer>
+            {
+                (store) => {
 
-    let addPost = () => {
-        if (state.profilePage.newPostTextValue!=false) {
-            props.store.dispatch(addPostActionCreator())
-        } else {
-            alert("You must type some!")
-        }
-    }
+                    let state = store.getState()
 
-    let removeLastPost = () => {
-        props.store.dispatch(removePostActionCreator())
-    }
+                    let addPost = () => {
+                        if (state.profilePage.newPostTextValue != false) {
+                            store.dispatch(addPostActionCreator())
+                        } else {
+                            alert("You must type some!")
+                        }
+                    }
 
-    let onPostChange = (text) => {
-        props.store.dispatch(onPostChangeActionCreator(text))
-    }
+                    let removeLastPost = () => {
+                        store.dispatch(removePostActionCreator())
+                    }
 
-    return <MyPosts addPost={addPost}
-                    onPostChange={onPostChange}
-                    removeLastPost={removeLastPost}
-                    posts={state.profilePage.postsData}
-                    newPostText={state.profilePage.newPostTextValue}/>
+                    let onPostChange = (text) => {
+                        store.dispatch(onPostChangeActionCreator(text))
+                    }
+                    debugger;
+                    return <MyPosts addPost={addPost}
+                                    onPostChange={onPostChange}
+                                    removeLastPost={removeLastPost}
+                                    posts={state.profilePage.postsData}
+                                    newPostText={state.profilePage.newPostTextValue}/>
+
+                }
+            }
+        </StoreContext.Consumer>
+    )
 }
 
 

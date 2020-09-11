@@ -1,11 +1,22 @@
 import React from "react";
 import Friends from "./friends";
+import StoreContext from "../../../storeContext";
 
 const FriendsContainer = (props) => {
 
-    let state = props.store.getState()
+    return  (
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    let state = store.getState()
 
-    return <Friends friendsList={state.friends.friendsList}/>
+                    return <Friends friendsList={state.friends.friendsList}/>
+                }
+            }
+        </StoreContext.Consumer>
+    )
+
+
 
 
 }
