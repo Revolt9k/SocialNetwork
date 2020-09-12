@@ -4,11 +4,11 @@ import './App.css';
 import Header from "./components/header/Header";
 import Nav from "./components/nav/Nav";
 import Profile from "./components/profile/Profile";
-import News from "./components/news/news";
 import Music from "./components/music/music"
 import Settings from "./components/settings/settings"
 import DialogsContainer from "./components/dialogs/dialogsContainer";
-import {Route, BrowserRouter} from "react-router-dom";
+import {Route} from "react-router-dom";
+import PeopleContainer from "./components/people/peopleContainer";
 
 
 
@@ -22,7 +22,7 @@ const App = (props) => {
                     <Route exact path={'/'}  render={ () => <Profile  /> } />
                     <Route path='/profile' render={ () => <Profile  /> } />
                     <Route path='/dialogs' render={ () => <DialogsContainer  /> } />
-                    <Route path='/news' component={News}/>
+                    <Route path='/people' render={ () => <PeopleContainer /> }/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
                 </div>

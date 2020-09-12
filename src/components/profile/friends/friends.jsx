@@ -4,7 +4,6 @@ import FriendItem from "./friendItem/friendItem"
 
 
 const Friends = (props) => {
-    debugger;
 
     let lastOnlineFriends = props.friendsList
         .filter(item => item.isOnline === true)
