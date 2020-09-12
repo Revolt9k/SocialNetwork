@@ -36,29 +36,29 @@ const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case sendMessage: {
-            let stateCopy = {...state}
-            stateCopy.messagiesData = [...state.messagiesData]
             if (state.newMessageTextValue != false) {
                 let sendedMessage = {
-
                     id: "i",
                     message: state.newMessageTextValue,
                     imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
                     fromMe: true
-
                 }
-                stateCopy.messagiesData.push(sendedMessage)
-                stateCopy.newMessageTextValue = "";
+                return {
+                    ...state,
+                    messagiesData: [...state.messagiesData, sendedMessage],
+                    newMessageTextValue: ""
+                }
             } else {
                 alert("Type some first")
+                return state
             }
 
-            return stateCopy;
         }
         case changeMessage : {
-            let stateCopy = {...state}
-            stateCopy.newMessageTextValue = action.text;
-            return stateCopy;
+            return {
+                ...state,
+                newMessageTextValue: action.text,
+            }
 
         }
         default :

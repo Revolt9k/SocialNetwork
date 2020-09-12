@@ -51,10 +51,9 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case addPost :
-            let stateCopy = {...state};
-            stateCopy.postsData = [...state.postsData]
             if (state.newPostTextValue != false) {
                 let newPost = {
                     id: "i",
@@ -63,16 +62,22 @@ const profileReducer = (state = initialState, action) => {
                     avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
 
                 };
-                stateCopy.postsData.unshift(newPost);
-                stateCopy.newPostTextValue = "";
+                return {
+                    ...state,
+                    postsData: [newPost, ...state.postsData],
+                    newPostTextValue: "",
+                }
+                // stateCopy.postsData.unshift(newPost);
+                // stateCopy.newPostTextValue = "";
             } else {
                 alert("You must type some!")
+                return state
             }
-            return stateCopy;
         case changePost : {
-            let stateCopy = {...state};
-            stateCopy.newPostTextValue = action.text;
-            return stateCopy;
+            return {
+                ...state,
+                newPostTextValue: action.text
+            }
         }
         case removePost : {
             let stateCopy = {...state};
