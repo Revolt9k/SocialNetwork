@@ -49,21 +49,8 @@ const dialogsReducer = (state = initialState, action) => {
                     newMessageTextValue: ""
                 }
             } else {
-                let isSure = window.confirm("Are you sure you want to send an empty message?")
-                if (isSure === true) {
-                    let sendedMessage = {
-                        id: "i",
-                        message: state.newMessageTextValue,
-                        imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
-                        fromMe: true
-                    }
-                    return {
-                        ...state,
-                        messagiesData: [...state.messagiesData, sendedMessage],
-                    }
-                } else {
-                    return state
-                }
+                alert("Type some first")
+                return state
             }
 
         }
