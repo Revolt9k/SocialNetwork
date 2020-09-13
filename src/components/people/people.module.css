@@ -1,4 +1,4 @@
-.content{
+.content {
     padding: 20px;
     background-color: #cef3f3;
     text-align: center;
@@ -14,6 +14,153 @@
 
 }
 
-.feed {
-    text-align: center;
+.container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #337ab7;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px;
+
+}
+
+.avaImg {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.buttons {
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    text-transform: uppercase;
+    transition: all .2s linear;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.unfollowButton {
+
+    background-color: #faa8ac;
+    color: #cef3f3;
+
+}
+
+.followButton {
+    color: #1e083d;
+    background-color: #92ffb9;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+
+
+}
+
+.fullName {
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.status {
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.city {
+    font-weight: 700;
+    text-align: right;
+    margin-left: 5px;
+    font-size: 30px;
+
+}
+
+.country {
+    text-align: right;
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+@media (max-width: 800px) {
+    .avaImg {
+        width: 150px;
+        height: 150px;
+    }
+    .buttons {
+        width: 150px;
+    }
+
+    .fullName {
+        font-size: 30px;
+    }
+    .status {
+        font-size: 18px;
+    }
+    .city {
+        font-size: 25px;
+    }
+    .country {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .avaImg {
+        width: 100px;
+        height: 100px;
+    }
+    .buttons {
+        width: 100px;
+    }
+    .fullName {
+        font-size: 20px;
+    }
+    .status {
+        font-size: 16px;
+    }
+    .city {
+        font-size: 15px;
+    }
+    .country {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .city {
+        display: none;
+    }
+    .status {
+        font-size: 14px;
+    }
+    .country {
+        display: none;
+
+    }
+}
+
+@media (max-width: 400px) {
+
+    .avaImg {
+        width: 85px;
+        height: 85px;
+    }
+    .buttons {
+        width: 85px;
+    }
+    .info {
+        padding: 10px;
+    }
+    .fullName {
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .status {
+        font-size: 10px;
+    }
 }

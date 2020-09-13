@@ -3,36 +3,10 @@ const unfollow = 'unfollow';
 const setUsers = "setUsers";
 
 let initialState = {
-    peopleList: [
-        // {
-        //     id: 1,
-        //     fullname: "Aleksandr",
-        //     location: {city: "Moscow", country: "Russia"},
-        //     status: "Hello there",
-        //     isFollowing: true,
-        //     avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg",
-        // },
-        // {
-        //     id: 2,
-        //     fullname: "Nikolay",
-        //     location: {city: "Omsk", country: "Russia"},
-        //     status: "I'm boss",
-        //     isFollowing: false,
-        //     avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg",
-        // },
-        // {
-        //     id: 3,
-        //     fullname: "Masha",
-        //     location: {city: "Novosibirsk", country: "Russia"},
-        //     status: "Looking for love",
-        //     isFollowing: true,
-        //     avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar497.jpg",
-        // },
-    ],
+    peopleList: [ ],
 }
 
 const peopleReducer = (state = initialState, action) => {
-    debugger
     switch (action.type) {
         case  follow: {
             return {
