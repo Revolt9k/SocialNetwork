@@ -5,6 +5,7 @@
     margin:  15px 20px;
     height: 100px;
     transition: all .2s linear;
+    border-bottom: #337ab7 1px dotted;
 }
 
 

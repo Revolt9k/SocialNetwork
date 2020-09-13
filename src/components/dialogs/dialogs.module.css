@@ -15,7 +15,6 @@
 .dialogs {
     padding: 0 10px;
     border: 1px solid #337ab7;
-    /*border-left: none;*/
     border-radius: 55px;
 }
 
@@ -23,7 +22,6 @@
     font-size: 20px;
     border: 1px solid #00bfff;
     border-radius: 25px;
-    /*border-right: none;*/
     padding-left: 30px;
 }
 

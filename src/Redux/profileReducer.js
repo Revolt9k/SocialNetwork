@@ -67,11 +67,24 @@ const profileReducer = (state = initialState, action) => {
                     postsData: [newPost, ...state.postsData],
                     newPostTextValue: "",
                 }
-                // stateCopy.postsData.unshift(newPost);
-                // stateCopy.newPostTextValue = "";
             } else {
-                alert("You must type some!")
-                return state
+                let isSure = window.confirm("Are you sure you want to send an empty post?")
+                if (isSure === true){
+                    let newPost = {
+                        id: "i",
+                        message: state.newPostTextValue,
+                        author: "You",
+                        avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
+
+                    };
+                    return {
+                        ...state,
+                        postsData: [newPost, ...state.postsData],
+                    }
+                } else {
+                    return state
+                }
+
             }
         case changePost : {
             return {
