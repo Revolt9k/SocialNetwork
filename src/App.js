@@ -4,11 +4,11 @@ import './App.css';
 import Header from "./components/header/Header";
 import Nav from "./components/nav/Nav";
 import Profile from "./components/profile/Profile";
-import Music from "./components/music/music"
 import Settings from "./components/settings/settings"
 import DialogsContainer from "./components/dialogs/dialogsContainer";
 import {Route} from "react-router-dom";
 import PeopleContainer from "./components/people/peopleContainer";
+import PhotosContainer from "./components/photos/photosContainer";
 
 
 
@@ -22,8 +22,8 @@ const App = (props) => {
                     <Route exact path={'/'}  render={ () => <Profile  /> } />
                     <Route path='/profile' render={ () => <Profile  /> } />
                     <Route path='/dialogs' render={ () => <DialogsContainer  /> } />
-                    <Route path='/people' render={ () => <PeopleContainer /> }/>
-                    <Route path='/music' component={Music}/>
+                    <Route path='/people' render={ () => <PeopleContainer /> } />
+                    <Route path='/photos' render={ () => <PhotosContainer /> } />
                     <Route path='/settings' component={Settings}/>
                 </div>
             </container>

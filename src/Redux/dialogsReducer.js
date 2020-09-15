@@ -55,11 +55,11 @@ const dialogsReducer = (state = initialState, action) => {
 
         }
         case changeMessage : {
+            alert('smthn changed')
             return {
                 ...state,
                 newMessageTextValue: action.text,
             }
-
         }
         default :
             return state;

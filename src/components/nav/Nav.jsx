@@ -10,7 +10,7 @@ const Nav = () => {
             <NavItem text='profile' href="/profile"/>
             <NavItem text='dialogs' href="/dialogs"/>
             <NavItem text='people' href="/people"/>
-            <NavItem text='music' href="/music"/>
+            <NavItem text='photos' href="/photos"/>
             <NavItem text='settings' href="/settings"/>
 
         </nav>
