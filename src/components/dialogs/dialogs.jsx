@@ -3,91 +3,39 @@ import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
 
-// class Dialogs extends React.Component {
-//
-//     constructor(props) {
-//         super(props);
-//         this.sendMessageRef = React.createRef()
-//         this.mappedDialogs = this.props.dialogs
-//             .map( (dialog) => <DialogsItem id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
-//         this.friendMessagies = this.props.messagies
-//             .filter(item =>  item.fromMe !== true)
-//             .map ((message) => <Messagies friend={classes.friend} message={message.message} /> );
-//         this.myMessagies = this.props.messagies
-//             .filter(item =>  item.fromMe === true)
-//             .map ((message) => <Messagies message={message.message} /> )
-//     }
-//
-//     componentDidUpdate(prevProps, prevState, snapshot) {
-//
-//     }
-//
-//     localSendMessage = () => {
-//         this.props.localSendMesage()
-//     }
-//
-//     onMessageChange = () => {
-//         let text = this.sendMessageRef.current.value
-//         this.props.onMessageChange(text)
-//     }
-//
-//     render() { return <div className={classes.content}>
-//         <div className={classes.row + " " + "row"}>
-//             <div className={classes.dialogs + " " + classes.col + " " + 'col-xs-4'}>
-//
-//                 {this.mappedDialogs}
-//
-//             </div>
-//             <div className={"col-xs-1"}>
-//
-//             </div>
-//             <div className={classes.messagies + " " + classes.col + " " + 'col-xs-7'}>
-//
-//                 {this.friendMessagies}
-//                 {this.myMessagies}
-//
-//                 <div className={classes.textzone}><textarea  onChange={this.onMessageChange} ref={this.sendMessageRef} className={classes.textarea} value={this.props.newMessageTextValue}/> <button  onClick={this.localSendMessage} className={classes.sendButton}>send</button> </div>
-//
-//
-//             </div>
-//
-//         </div>
-//     </div>
-//
-//     }
-// }
+class Dialogs extends React.Component {
 
-const Dialogs = (props) => {
-
-    let mappedDialogs = props.dialogs
-        .map( (dialog) => <DialogsItem id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
-
-
-    let friendMessagies = props.messagies
-        .filter(item =>  item.fromMe !== true)
-        .map ((message) => <Messagies friend={classes.friend} message={message.message} /> )
-
-
-    let myMessagies = props.messagies
-        .filter(item =>  item.fromMe === true)
-        .map ((message) => <Messagies message={message.message} /> )
-
-    let sendMessageRef = React.createRef()
-
-    let localSendMessage = () => {
-        props.localSendMesage()
+    constructor(props) {
+        super(props);
+        this.sendMessageRef = React.createRef()
+        this.mappedDialogs = this.props.dialogs
+            .map( (dialog) => <DialogsItem id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
+        this.friendMessagies = this.props.messagies
+            .filter(item =>  item.fromMe !== true)
+            .map ((message) => <Messagies friend={classes.friend} message={message.message} /> );
+        this.myMessagies = this.props.messagies
+            .filter(item =>  item.fromMe === true)
+            .map ((message) => <Messagies message={message.message} /> )
     }
 
-    let onMessageChange = () => {
-        let text = sendMessageRef.current.value
-        props.onMessageChange(text)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
     }
 
-    return <div className={classes.content}>
+    localSendMessage = () => {
+        this.props.localSendMesage()
+    }
+
+    onMessageChange = () => {
+        let text = this.sendMessageRef.current.value
+        this.props.onMessageChange(text)
+    }
+
+    render() { return <div className={classes.content}>
         <div className={classes.row + " " + "row"}>
             <div className={classes.dialogs + " " + classes.col + " " + 'col-xs-4'}>
 
-                {mappedDialogs}
+                {this.mappedDialogs}
 
             </div>
             <div className={"col-xs-1"}>
@@ -95,16 +43,68 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.messagies + " " + classes.col + " " + 'col-xs-7'}>
 
-                {friendMessagies}
-                {myMessagies}
+                {this.friendMessagies}
+                {this.myMessagies}
 
-                <div className={classes.textzone}><textarea  onChange={onMessageChange} ref={sendMessageRef} className={classes.textarea} value={props.newMessageTextValue}/> <button  onClick={localSendMessage} className={classes.sendButton}>send</button> </div>
+                <div className={classes.textzone}><textarea  onChange={this.onMessageChange} ref={this.sendMessageRef} className={classes.textarea} value={this.props.newMessageTextValue}/> <button  onClick={this.localSendMessage} className={classes.sendButton}>send</button> </div>
 
 
             </div>
 
         </div>
     </div>
+
+    }
 }
+
+// const Dialogs = (props) => {
+//
+//     let mappedDialogs = props.dialogs
+//         .map( (dialog) => <DialogsItem id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
+//
+//
+//     let friendMessagies = props.messagies
+//         .filter(item =>  item.fromMe !== true)
+//         .map ((message) => <Messagies friend={classes.friend} message={message.message} /> )
+//
+//
+//     let myMessagies = props.messagies
+//         .filter(item =>  item.fromMe === true)
+//         .map ((message) => <Messagies message={message.message} /> )
+//
+//     let sendMessageRef = React.createRef()
+//
+//     let localSendMessage = () => {
+//         props.localSendMesage()
+//     }
+//
+//     let onMessageChange = () => {
+//         let text = sendMessageRef.current.value
+//         props.onMessageChange(text)
+//     }
+//
+//     return <div className={classes.content}>
+//         <div className={classes.row + " " + "row"}>
+//             <div className={classes.dialogs + " " + classes.col + " " + 'col-xs-4'}>
+//
+//                 {mappedDialogs}
+//
+//             </div>
+//             <div className={"col-xs-1"}>
+//
+//             </div>
+//             <div className={classes.messagies + " " + classes.col + " " + 'col-xs-7'}>
+//
+//                 {friendMessagies}
+//                 {myMessagies}
+//
+//                 <div className={classes.textzone}><textarea  onChange={onMessageChange} ref={sendMessageRef} className={classes.textarea} value={props.newMessageTextValue}/> <button  onClick={localSendMessage} className={classes.sendButton}>send</button> </div>
+//
+//
+//             </div>
+//
+//         </div>
+//     </div>
+// }
 
 export default Dialogs

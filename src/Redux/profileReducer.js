@@ -54,6 +54,7 @@ const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case addPost :
+            debugger
             if (state.newPostTextValue != false) {
                 let newPost = {
                     id: "i",
