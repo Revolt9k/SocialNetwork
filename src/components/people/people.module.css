@@ -86,6 +86,10 @@
     font-size: 25px;
 }
 
+.selectButton {
+    font-weight: 700;
+}
+
 @media (max-width: 800px) {
     .avaImg {
         width: 150px;

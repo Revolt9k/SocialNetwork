@@ -3,22 +3,53 @@ import classes from './people.module.css';
 import * as axios from 'axios'
 import userDeafaultAva from "../../../src/assets/images/noava.jpg"
 
-class People extends React.Component{
+class People extends React.Component {
 
-    getPeopleList = () => {
-        if (this.props.peopleList.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                debugger
-                this.props.setusers(response.data.items)
-            });
-        }
+    constructor(props) {
+        super(props);
+
+    }
+
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
+            this.props.setusers(response.data.items)
+        });
+    }
+
+    onPageChanged = (page) => {
+        this.props.changePage(page)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`).then(response => {
+            this.props.setusers(response.data.items)
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+
+        let pages = [];
+
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
+
         return <div className={classes.content}>
 
             <div className={classes.row + " " + "row"}>
                 <div className={classes.col + " " + 'col-xs-1'}>
+
+                    {pages.map(page => {
+                            return <button className={this.props.currentPage === page && classes.selectButton} onClick={() => {this.props.changePage(page)}}> {page} </button>
+                    })}
+                    {/*<button className={classes.selectButton}>2</button>*/}
+                    {/*<button className={classes.selectButton}>3</button>*/}
+                    {/*<button className={classes.selectButton}>4</button>*/}
+                    {/*<button onClick={this.getPeopleList}> show more</button>*/}
+
                 </div>
                 <div className={classes.col + " " + 'col-xs-10'}>
 
@@ -29,12 +60,14 @@ class People extends React.Component{
                                      src={user.photos.small != null ? user.photos.small : userDeafaultAva} alt=""/>
                                 <div>
                                     {user.followed ?
-                                        <button className={classes.buttons + " " + classes.unfollowButton} onClick={() => {
-                                            this.props.unfollow(user.id)
-                                        }}> unfollow </button> :
-                                        <button className={classes.buttons + " " + classes.followButton} onClick={() => {
-                                            this.props.follow(user.id)
-                                        }}> follow </button>}
+                                        <button className={classes.buttons + " " + classes.unfollowButton}
+                                                onClick={() => {
+                                                    this.props.unfollow(user.id)
+                                                }}> unfollow </button> :
+                                        <button className={classes.buttons + " " + classes.followButton}
+                                                onClick={() => {
+                                                    this.props.follow(user.id)
+                                                }}> follow </button>}
                                 </div>
                             </div>
                             <div className={classes.info}>
@@ -49,7 +82,6 @@ class People extends React.Component{
                             </div>
                         </div>
                     </div>)}
-                    <button onClick={this.getPeopleList}> show more</button>
                 </div>
                 <div className={classes.col + " " + 'col-xs-1'}>
                 </div>

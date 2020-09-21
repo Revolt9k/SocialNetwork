@@ -43,11 +43,13 @@ const dialogsReducer = (state = initialState, action) => {
                     imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
                     fromMe: true
                 }
+                debugger
                 return {
                     ...state,
                     messagiesData: [...state.messagiesData, sendedMessage],
                     newMessageTextValue: ""
                 }
+
             } else {
                 alert("Type some first")
                 return state
@@ -55,10 +57,10 @@ const dialogsReducer = (state = initialState, action) => {
 
         }
         case changeMessage : {
-            alert('smthn changed')
             return {
                 ...state,
                 newMessageTextValue: action.text,
+
             }
         }
         default :
