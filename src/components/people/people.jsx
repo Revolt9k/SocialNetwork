@@ -1,6 +1,7 @@
 import React from "react";
 import classes from './people.module.css';
 import userDeafaultAva from "../../../src/assets/images/noava.jpg"
+import Loader from "../../assets/common/loader";
 
 const People = (props) => {
 
@@ -12,6 +13,7 @@ const People = (props) => {
             pages.push(i);
         }
 
+debugger
 
         return <div className={classes.content}>
 
@@ -25,20 +27,10 @@ const People = (props) => {
                     </div>
                 </div>
                 <div className={classes.col + " " + 'col-xs-10'}>
-                    <div className={props.isFetching === true && classes.spinner}>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+
+                    {props.isFetching === true ? <Loader isFetching /> : null}
+
+
                     {props.peopleList.map((user) => <div key={user.id}>
                         <div className={classes.container}>
                             <div>

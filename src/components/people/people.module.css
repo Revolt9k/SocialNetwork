@@ -214,6 +214,10 @@
 }
 
 @media (max-width: 600px) {
+    .pagetext {
+        font-size: 18px;
+        font-weight: 700;
+    }
     .avaImg {
         width: 100px;
         height: 100px;
