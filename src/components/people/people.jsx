@@ -12,6 +12,7 @@ class People extends React.Component {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
             this.props.setusers(response.data.items)
+            this.props.setTotalPeopleCount(response.data.totalCount)
         });
     }
 

@@ -1,6 +1,6 @@
 import People from "./people";
 import {connect} from "react-redux";
-import {changePageAC, followAC, setUsersAC, unfollowAC} from "../../Redux/peopleReducer";
+import {changePageAC, followAC, setPeopleCountAC, setUsersAC, unfollowAC} from "../../Redux/peopleReducer";
 
 let mapStateToProps = (state) => {
     return {
@@ -9,6 +9,7 @@ let mapStateToProps = (state) => {
         totalUserCount: state.peoplePage.totalUserCount,
         currentPage: state.peoplePage.currentPage,
     }
+
 }
 
 let mapDispatchToProps = (dispatch) => {
@@ -23,8 +24,12 @@ let mapDispatchToProps = (dispatch) => {
             dispatch(setUsersAC(newUserList))
         },
         changePage: (page) => {
+
             dispatch(changePageAC(page))
         },
+        setTotalPeopleCount: (totalUserCount) => {
+            dispatch(setPeopleCountAC(totalUserCount))
+        }
     }
 }
 
