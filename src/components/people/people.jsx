@@ -7,7 +7,6 @@ class People extends React.Component {
 
     constructor(props) {
         super(props);
-
     }
 
     componentDidMount() {
@@ -23,8 +22,6 @@ class People extends React.Component {
         });
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-    }
 
     render() {
 
@@ -43,7 +40,7 @@ class People extends React.Component {
                 <div className={classes.col + " " + 'col-xs-1'}>
 
                     {pages.map(page => {
-                            return <button className={this.props.currentPage === page && classes.selectButton} onClick={() => {this.props.changePage(page)}}> {page} </button>
+                            return <button className={this.props.currentPage === page && classes.selectButton} onClick={() => {this.onPageChanged(page)}}> {page} </button>
                     })}
 
 

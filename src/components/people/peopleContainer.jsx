@@ -1,4 +1,3 @@
-import React from "react";
 import People from "./people";
 import {connect} from "react-redux";
 import {changePageAC, followAC, setUsersAC, unfollowAC} from "../../Redux/peopleReducer";
