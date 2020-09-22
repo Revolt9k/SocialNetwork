@@ -1,6 +1,64 @@
-import People from "./people";
 import {connect} from "react-redux";
-import {changePageAC, followAC, setPeopleCountAC, setUsersAC, unfollowAC} from "../../Redux/peopleReducer";
+import {
+    changePageAC,
+    followAC,
+    setPeopleCountAC,
+    setUsersAC,
+    toggleFetchAC,
+    unfollowAC
+} from "../../Redux/peopleReducer";
+import React from "react";
+import * as axios from "axios";
+import People from "./people";
+
+class PeopleContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.toggleFetch(false)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
+            this.props.toggleFetch(true)
+            this.props.setusers(response.data.items)
+            this.props.setTotalPeopleCount(response.data.totalCount)
+        });
+    }
+
+    onPageChanged = (page) => {
+        this.props.toggleFetch(false)
+        this.props.changePage(page)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`).then(response => {
+            this.props.toggleFetch(true)
+            this.props.setusers(response.data.items)
+        });
+    }
+
+
+    render() {
+
+        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+
+        let pages = [];
+
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
+        return <People totalUserCount={this.props.totalUserCount}
+                       pageSize={this.props.pageSize}
+                       currentPage={this.props.currentPage}
+                       changePage={this.onPageChanged}
+                       peopleList={this.props.peopleList}
+                       follow={this.props.follow}
+                       unfollow={this.props.unfollow}
+                       isFetching={this.props.isFetching}
+                       toggleFetch={this.props.toggleFetch}
+
+        />
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -8,6 +66,7 @@ let mapStateToProps = (state) => {
         pageSize: state.peoplePage.pageSize,
         totalUserCount: state.peoplePage.totalUserCount,
         currentPage: state.peoplePage.currentPage,
+        isFetching: state.peoplePage.isFetching,
     }
 
 }
@@ -29,9 +88,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTotalPeopleCount: (totalUserCount) => {
             dispatch(setPeopleCountAC(totalUserCount))
+        },
+        toggleFetch: (isFetching) => {
+            dispatch(toggleFetchAC(isFetching))
         }
     }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(People)
+export default connect(mapStateToProps, mapDispatchToProps)(PeopleContainer)

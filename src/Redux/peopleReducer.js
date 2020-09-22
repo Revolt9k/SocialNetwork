@@ -3,12 +3,14 @@ const unfollow = 'unfollow';
 const setUsers = "setUsers";
 const changePage = "changePage";
 const setTotalPeopleCount = "setTotalPeopleCount"
+const toggleFetch = "toggleFetch"
 
 let initialState = {
     peopleList: [],
     pageSize: 20,
     totalUserCount: 0,
     currentPage: 1,
+    isFetching: true,
 }
 
 const peopleReducer = (state = initialState, action) => {
@@ -61,6 +63,22 @@ const peopleReducer = (state = initialState, action) => {
             }
 
         }
+
+        case toggleFetch : {
+            if (action.isFetching === true) {
+                return {
+                    ...state,
+                    isFetching: false
+                }
+            } else if (action.isFetching === false) {
+                return {
+                    ...state,
+                    isFetching: true
+                }
+            }
+        }
+
+
         default : {
             return state;
 
@@ -78,6 +96,8 @@ export const setUsersAC = (newUserList) => ({type: setUsers, newUserList})
 export const changePageAC = (page) => ({type: changePage, page})
 
 export const setPeopleCountAC = (peopleCount) => ({type: setTotalPeopleCount, peopleCount})
+
+export const toggleFetchAC = (isFetching) => ({type: toggleFetch, isFetching})
 
 
 export default peopleReducer

@@ -1,32 +1,10 @@
 import React from "react";
 import classes from './people.module.css';
-import * as axios from 'axios'
 import userDeafaultAva from "../../../src/assets/images/noava.jpg"
 
-class People extends React.Component {
+const People = (props) => {
 
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
-            this.props.setusers(response.data.items)
-            this.props.setTotalPeopleCount(response.data.totalCount)
-        });
-    }
-
-    onPageChanged = (page) => {
-        this.props.changePage(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`).then(response => {
-            this.props.setusers(response.data.items)
-        });
-    }
-
-
-    render() {
-
-        let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+        let pagesCount = Math.ceil(props.totalUserCount / props.pageSize)
 
         let pages = [];
 
@@ -38,17 +16,30 @@ class People extends React.Component {
         return <div className={classes.content}>
 
             <div className={classes.row + " " + "row"}>
-                <div className={classes.col + " " + 'col-xs-1'}>
-
+                <div className={classes.col + " " + 'col-xs-2'}>
+                    <div className={classes.pagetext}>Page:</div>
+                    <div>
                     {pages.map(page => {
-                            return <button className={(this.props.currentPage === page && classes.selectButton) + " " + classes.pageButton} onClick={() => {this.onPageChanged(page)}}> {page} </button>
+                        return <button className={(props.currentPage === page && classes.selectButton) + " " + classes.pageButton} onClick={() => {props.changePage(page)}}> {page} </button>
                     })}
-
-
+                    </div>
                 </div>
                 <div className={classes.col + " " + 'col-xs-10'}>
-
-                    {this.props.peopleList.map((user) => <div key={user.id}>
+                    <div className={props.isFetching === true && classes.spinner}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    {props.peopleList.map((user) => <div key={user.id}>
                         <div className={classes.container}>
                             <div>
                                 <img className={classes.avaImg}
@@ -57,11 +48,11 @@ class People extends React.Component {
                                     {user.followed ?
                                         <button className={classes.buttons + " " + classes.unfollowButton}
                                                 onClick={() => {
-                                                    this.props.unfollow(user.id)
+                                                    props.unfollow(user.id)
                                                 }}> unfollow </button> :
                                         <button className={classes.buttons + " " + classes.followButton}
                                                 onClick={() => {
-                                                    this.props.follow(user.id)
+                                                    props.follow(user.id)
                                                 }}> follow </button>}
                                 </div>
                             </div>
@@ -78,11 +69,8 @@ class People extends React.Component {
                         </div>
                     </div>)}
                 </div>
-                <div className={classes.col + " " + 'col-xs-1'}>
-                </div>
             </div>
         </div>
     }
-}
 
 export default People
