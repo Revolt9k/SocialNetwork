@@ -41,7 +41,7 @@ class People extends React.Component {
                 <div className={classes.col + " " + 'col-xs-1'}>
 
                     {pages.map(page => {
-                            return <button className={this.props.currentPage === page && classes.selectButton} onClick={() => {this.onPageChanged(page)}}> {page} </button>
+                            return <button className={(this.props.currentPage === page && classes.selectButton) + " " + classes.pageButton} onClick={() => {this.onPageChanged(page)}}> {page} </button>
                     })}
 
 
