@@ -1,5 +1,5 @@
-const addPhoto = 'addPhoto';
-const changeURL = 'changeURL';
+const ADD_PHOTO = 'addPhoto';
+const CHANGE_URL = 'changeURL';
 
 let initialState = {
     photosList: [
@@ -15,7 +15,7 @@ let initialState = {
 
 const photosReducer = (state = initialState, action) => {
     switch (action.type) {
-        case  addPhoto: {
+        case  ADD_PHOTO: {
             if((state.newPhotoURL != false)&&(state.newPhotoURL != undefined)) {
                 let newPhoto = {
                     id: "newID",
@@ -34,7 +34,7 @@ const photosReducer = (state = initialState, action) => {
             }
 
         }
-        case changeURL: {
+        case CHANGE_URL: {
             return {
                 ...state,
                 newPhotoURL: action.newUrl,
@@ -44,8 +44,8 @@ const photosReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const changeURLAC = (newUrl) => ({type: changeURL, newUrl})
+export const changeURL = (newUrl) => ({type: CHANGE_URL, newUrl})
 
-export const addPhotoAC = () => ({type: addPhoto})
+export const addPhoto = () => ({type: ADD_PHOTO})
 
 export default photosReducer

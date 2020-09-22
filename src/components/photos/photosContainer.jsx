@@ -1,7 +1,7 @@
 import React from "react";
 import photos from "./photos";
 import {connect} from "react-redux";
-import {addPhotoAC, changeURLAC} from "../../Redux/photosReducer";
+import {addPhoto, changeURL} from "../../Redux/photosReducer";
 
 
 let mapStateToProps = (state) => {
@@ -14,10 +14,10 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         localAddPhoto: () => {
-            dispatch(addPhotoAC())
+            dispatch(addPhoto())
         },
         onChange: (newUrl) => {
-            dispatch(changeURLAC(newUrl))
+            dispatch(changeURL(newUrl))
         }
 
     }

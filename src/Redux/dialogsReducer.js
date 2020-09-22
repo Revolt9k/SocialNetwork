@@ -1,5 +1,5 @@
-const sendMessage = 'sendMessage';
-const changeMessage = 'changeMessage';
+const SEND_MESSAGE = 'sendMessage';
+const CHANGE_MESSAGE = 'changeMessage';
 
 let initialState = {
     dialogsData: [
@@ -35,7 +35,7 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case sendMessage: {
+        case SEND_MESSAGE: {
             if (state.newMessageTextValue != false) {
                 let sendedMessage = {
                     id: "i",
@@ -55,7 +55,7 @@ const dialogsReducer = (state = initialState, action) => {
             }
 
         }
-        case changeMessage : {
+        case CHANGE_MESSAGE : {
             return {
                 ...state,
                 newMessageTextValue: action.text,
@@ -67,8 +67,8 @@ const dialogsReducer = (state = initialState, action) => {
     }
 
 }
-export const sendMessageActionCreator = () => ({type: sendMessage})
+export const sendMessage = () => ({type: SEND_MESSAGE})
 
-export const onMessageChangeActionCreator = (text) => ({type: changeMessage, text: text})
+export const onMessageChange = (text) => ({type: CHANGE_MESSAGE, text: text})
 
 export default dialogsReducer

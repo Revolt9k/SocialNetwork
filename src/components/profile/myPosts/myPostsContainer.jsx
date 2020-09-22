@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap-theme.min.css';
-import {addPostActionCreator, onPostChangeActionCreator, removePostActionCreator} from "../../../Redux/profileReducer";
+import {addPost, onPostChange, removePost} from "../../../Redux/profileReducer";
 import MyPosts from "./myPosts";
 import {connect} from "react-redux";
 
@@ -15,13 +15,13 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
     return {
         addPost: () => {
-            dispatch(addPostActionCreator())
+            dispatch(addPost())
         } ,
         removeLastPost: () => {
-            dispatch(removePostActionCreator())
+            dispatch(removePost())
         },
         onPostChange: (text) => {
-            dispatch(onPostChangeActionCreator(text))
+            dispatch(onPostChange(text))
         }
     }
 }

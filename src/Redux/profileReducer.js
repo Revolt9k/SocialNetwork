@@ -1,6 +1,6 @@
-const addPost = 'addPost';
-const changePost = 'changePost';
-const removePost = 'removePost';
+const ADD_POST = 'addPost';
+const CHANGE_POST = 'changePost';
+const REMOVE_POST = 'removePost';
 
 let initialState = {
     postsData: [
@@ -53,7 +53,7 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case addPost :
+        case ADD_POST :
             if (state.newPostTextValue != false) {
                 let newPost = {
                     id: "i",
@@ -71,13 +71,13 @@ const profileReducer = (state = initialState, action) => {
                 alert("You must type some!")
                 return state
             }
-        case changePost : {
+        case CHANGE_POST : {
             return {
                 ...state,
                 newPostTextValue: action.text
             }
         }
-        case removePost : {
+        case REMOVE_POST : {
             let stateCopy = {...state};
             stateCopy.postsData = [...state.postsData]
             stateCopy.postsData.splice(0, 1)
@@ -88,10 +88,10 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: addPost})
+export const addPost = () => ({type: ADD_POST})
 
-export const onPostChangeActionCreator = (text) => ({type: changePost, text: text})
+export const onPostChange = (text) => ({type: CHANGE_POST, text: text})
 
-export const removePostActionCreator = () => ({type: removePost})
+export const removePost = () => ({type: REMOVE_POST})
 
 export default profileReducer
