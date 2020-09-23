@@ -1,6 +1,7 @@
 const ADD_POST = 'addPost';
 const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     postsData: [
@@ -48,6 +49,7 @@ let initialState = {
         }
     ],
     newPostTextValue: "",
+    profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -83,6 +85,9 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.postsData.splice(0, 1)
             return stateCopy;
         }
+        case SET_USER_PROFILE : {
+            return {...state, profile: action.profile}
+        }
         default :
             return state;
     }
@@ -93,5 +98,7 @@ export const addPost = () => ({type: ADD_POST})
 export const onPostChange = (text) => ({type: CHANGE_POST, text: text})
 
 export const removePost = () => ({type: REMOVE_POST})
+
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export default profileReducer

@@ -4,14 +4,14 @@ import ProfileInfo from "./ProfileInfo/profileInfo";
 import MyPostsContainer from "./myPosts/myPostsContainer";
 import FriendsContainer from "./friends/friendsContainer";
 
-const Profile = () => {
+const Profile = (props) => {
 
 
 
     return <div className={classes.content}>
         <div className='row'>
             <div className='col-xs-3'>
-                <ProfileInfo />
+                <ProfileInfo profile={props.profile}/>
                 <FriendsContainer />
             </div>
             <div className='col-xs-9'>

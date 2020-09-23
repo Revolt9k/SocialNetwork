@@ -9,6 +9,7 @@ import DialogsContainer from "./components/dialogs/dialogsContainer";
 import {Route} from "react-router-dom";
 import PeopleContainer from "./components/people/peopleContainer";
 import PhotosContainer from "./components/photos/photosContainer";
+import ProfileContainer from "./components/profile/ProfileContainer";
 
 
 
@@ -19,8 +20,8 @@ const App = (props) => {
                 <Header/>
                 <Nav/>
                 <div className='main_content'>
-                    <Route exact path={'/'}  render={ () => <Profile  /> } />
-                    <Route path='/profile' render={ () => <Profile  /> } />
+                    <Route exact path={'/'}  render={ () => <ProfileContainer  /> } />
+                    <Route path='/profile/:userId?' render={ () => <ProfileContainer  /> } />
                     <Route path='/dialogs' render={ () => <DialogsContainer  /> } />
                     <Route path='/people' render={ () => <PeopleContainer /> } />
                     <Route path='/photos' render={ () => <PhotosContainer /> } />

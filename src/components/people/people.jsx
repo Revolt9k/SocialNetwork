@@ -2,6 +2,7 @@ import React from "react";
 import classes from './people.module.css';
 import userDeafaultAva from "../../../src/assets/images/noava.jpg"
 import Loader from "../../assets/common/loader";
+import {NavLink} from "react-router-dom";
 
 const People = (props) => {
 
@@ -12,8 +13,6 @@ const People = (props) => {
         for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
-
-debugger
 
         return <div className={classes.content}>
 
@@ -34,8 +33,10 @@ debugger
                     {props.peopleList.map((user) => <div key={user.id}>
                         <div className={classes.container}>
                             <div>
+                                <NavLink to={'/profile/' + user.id}>
                                 <img className={classes.avaImg}
                                      src={user.photos.small != null ? user.photos.small : userDeafaultAva} alt=""/>
+                                </NavLink>
                                 <div>
                                     {user.followed ?
                                         <button className={classes.buttons + " " + classes.unfollowButton}

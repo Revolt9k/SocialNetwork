@@ -1,25 +1,21 @@
 import React from "react";
 import classes from './profileInfo.module.css';
-import ava from "./ava.jpg"
+import noava from "../../../assets/images/noava.jpg"
+import Loader from "../../../assets/common/loader";
 
 const ProfileInfo = (props) => {
+    if(!props.profile) {
+        return <Loader className={classes.loader}/>
+    }
     return <div>
-        <img className={classes.contentImg} src={ava} alt=""/>
+        <img className={classes.contentImg} src={noava || props.profile.photos.large} alt=""/>
         <div>
             <div className={classes.row + " " + "row"}>
                 <div className={classes.key + " " + 'col-xs-6'}>
                     Name:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    Ivan
-                </div>
-            </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
-                    Surname:
-                </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
-                    Ivanov
+                    {props.profile.fullName}
                 </div>
             </div>
             <div className={classes.row + " " + "row"}>
@@ -27,7 +23,7 @@ const ProfileInfo = (props) => {
                     Age:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    25
+
                 </div>
             </div>
             <div className={classes.row + " " + "row"}>
@@ -35,23 +31,31 @@ const ProfileInfo = (props) => {
                     From:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    Omsk, Russia
+
                 </div>
             </div>
             <div className={classes.row + " " + "row"}>
                 <div className={classes.key + " " + 'col-xs-6'}>
-                    Languages:
+                    Looking for a job:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    Russian, English
+                    {props.profile.lookingForAJobDescription}
                 </div>
             </div>
             <div className={classes.row + " " + "row"}>
                 <div className={classes.key + " " + 'col-xs-6'}>
-                    Number:
+                    Vk link:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    8 800 555 35 35
+                    {props.profile.contacts.vk}
+                </div>
+            </div>
+            <div className={classes.row + " " + "row"}>
+                <div className={classes.key + " " + 'col-xs-6'}>
+                    GitHub link:
+                </div>
+                <div className={classes.value + " " + 'col-xs-6'}>
+                    {props.profile.contacts.github}
                 </div>
             </div>
 
