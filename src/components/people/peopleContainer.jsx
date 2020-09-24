@@ -19,7 +19,11 @@ class PeopleContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleFetch(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
+            {
+                withCredentials: true,
+            }
+        ).then(response => {
             this.props.toggleFetch(true)
             this.props.setUsers(response.data.items)
             this.props.setTotalPeopleCount(response.data.totalCount)
@@ -29,7 +33,11 @@ class PeopleContainer extends React.Component {
     onPageChanged = (page) => {
         this.props.toggleFetch(false)
         this.props.changePage(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`,
+            {
+                withCredentials: true,
+            }
+        ).then(response => {
             this.props.toggleFetch(true)
             this.props.setUsers(response.data.items)
         });
