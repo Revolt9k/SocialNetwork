@@ -1,9 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import './App.css';
-import Header from "./components/header/Header";
+import HeaderContainer from "./components/header/HeaderContainer";
 import Nav from "./components/nav/Nav";
-import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/settings"
 import DialogsContainer from "./components/dialogs/dialogsContainer";
 import {Route} from "react-router-dom";
@@ -17,7 +16,7 @@ const App = (props) => {
 
     return (
             <container>
-                <Header/>
+                <HeaderContainer/>
                 <Nav/>
                 <div className='main_content'>
                     <Route exact path={'/'}  render={ () => <ProfileContainer  /> } />

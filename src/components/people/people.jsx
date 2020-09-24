@@ -54,10 +54,6 @@ const People = (props) => {
                                     <div className={classes.fullName}> {user.name}</div>
                                     <div className={classes.status}>Status: {user.status}</div>
                                 </div>
-                                <div>
-                                    {/*<div className={classes.city}>{user.location.city}  </div>*/}
-                                    {/*<div className={classes.country}>{user.location.country}  </div>*/}
-                                </div>
                             </div>
                         </div>
                     </div>)}

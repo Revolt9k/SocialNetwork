@@ -26,6 +26,15 @@
     fill: red;
 }
 
+.loginBlock {
+    margin-right: 5px;
+    text-align: right;
+}
+
+.login {
+    color: white;
+}
+
 @media (max-width: 1000px) {
     .text {
         font-size: 40px;

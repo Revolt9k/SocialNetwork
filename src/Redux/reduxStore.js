@@ -4,13 +4,15 @@ import dialogsReducer from "./dialogsReducer";
 import friendsReducer from "./friendsReducer";
 import peopleReducer from "./peopleReducer";
 import photosReducer from "./photosReducer";
+import authReducer from "./AuthReducer";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     friends: friendsReducer,
     peoplePage: peopleReducer,
-    photosPage: photosReducer
+    photosPage: photosReducer,
+    auth: authReducer
 });
 
 

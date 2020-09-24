@@ -8,7 +8,7 @@ const ProfileInfo = (props) => {
         return <Loader className={classes.loader}/>
     }
     return <div>
-        <img className={classes.contentImg} src={noava || props.profile.photos.large} alt=""/>
+        <img className={classes.contentImg} src={props.profile.photos.large || noava} alt=""/>
         <div>
             <div className={classes.row + " " + "row"}>
                 <div className={classes.key + " " + 'col-xs-6'}>
