@@ -8,8 +8,8 @@ import {
     unfollow
 } from "../../Redux/peopleReducer";
 import React from "react";
-import * as axios from "axios";
 import People from "./people";
+import {usersAPI} from "../../API/api";
 
 class PeopleContainer extends React.Component {
 
@@ -19,27 +19,19 @@ class PeopleContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleFetch(false)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
-            {
-                withCredentials: true,
-            }
-        ).then(response => {
+        usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
             this.props.toggleFetch(true)
-            this.props.setUsers(response.data.items)
-            this.props.setTotalPeopleCount(response.data.totalCount)
+            this.props.setUsers(data.items)
+            this.props.setTotalPeopleCount(data.totalCount)
         });
     }
 
     onPageChanged = (page) => {
         this.props.toggleFetch(false)
         this.props.changePage(page)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`,
-            {
-                withCredentials: true,
-            }
-        ).then(response => {
+        usersAPI.getUsers(this.props.pageSize, page).then(data => {
             this.props.toggleFetch(true)
-            this.props.setUsers(response.data.items)
+            this.props.setUsers(data.items)
         });
     }
 
