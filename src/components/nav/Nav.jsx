@@ -4,7 +4,7 @@ import classes from './Nav.module.css'
 import NavItem from "./navItem/NavItem";
 
 const Nav = () => {
-    return <container>
+    return <div>
         <nav className={classes.menu}>
 
             <NavItem text='profile' href="/profile"/>
@@ -14,6 +14,6 @@ const Nav = () => {
             <NavItem text='settings' href="/settings"/>
 
         </nav>
-    </container>
+    </div>
 }
 export default Nav

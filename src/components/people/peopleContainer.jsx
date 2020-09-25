@@ -13,10 +13,6 @@ import {usersAPI} from "../../API/api";
 
 class PeopleContainer extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.toggleFetch(false)
         usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {

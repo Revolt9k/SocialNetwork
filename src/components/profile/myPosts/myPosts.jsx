@@ -70,7 +70,7 @@ const MyPosts = (props) => {
         props.onPostChange(text)
     }
 
-    return <container>
+    return <div>
 
             <div className={classes.textzone}>
                 <textarea  onChange={onPostChange} className={classes.textarea} ref={newPostRef} value={props.newPostText} ></textarea>
@@ -80,7 +80,7 @@ const MyPosts = (props) => {
 
         {mappedPosts}
 
-    </container>
+    </div>
 }
 
 

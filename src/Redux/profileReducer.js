@@ -58,7 +58,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST :
             if (state.newPostTextValue != false) {
                 let newPost = {
-                    id: "i",
+                    id: null,
                     message: state.newPostTextValue,
                     author: "You",
                     avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"

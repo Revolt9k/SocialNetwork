@@ -14,7 +14,7 @@ const Header = (props) => {
                     src={logo}
                     className={classes.img}
                 />
-                <navitem className={classes.text}>Social Network</navitem>
+                <div className={classes.text}>Social Network</div>
             </Navbar.Brand>
             <div className={classes.loginBlock}>
                 {props.isAuth ?

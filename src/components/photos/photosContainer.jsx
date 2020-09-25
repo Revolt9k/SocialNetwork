@@ -1,4 +1,3 @@
-import React from "react";
 import photos from "./photos";
 import {connect} from "react-redux";
 import {addPhoto, changeURL} from "../../Redux/photosReducer";

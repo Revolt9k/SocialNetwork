@@ -15,7 +15,7 @@ import ProfileContainer from "./components/profile/ProfileContainer";
 const App = (props) => {
 
     return (
-            <container>
+            <div>
                 <HeaderContainer/>
                 <Nav/>
                 <div className='main_content'>
@@ -26,7 +26,7 @@ const App = (props) => {
                     <Route path='/photos' render={ () => <PhotosContainer /> } />
                     <Route path='/settings' component={Settings}/>
                 </div>
-            </container>
+            </div>
     );
 }
 
