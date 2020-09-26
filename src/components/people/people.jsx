@@ -44,24 +44,24 @@ const People = (props) => {
                             </NavLink>
                             <div>
                                 {user.followed ?
-                                    <button disabled={props.followingInProgress} className={classes.buttons + " " + classes.unfollowButton}
+                                    <button disabled={props.followingInProgress.some(id => id === user.id)} className={classes.buttons + " " + classes.unfollowButton}
                                             onClick={() => {
-                                                props.toggleFollowing(true);
+                                                props.toggleFollowing(true, user.id);
                                                 usersAPI.unfollowUser(user.id).then(data => {
                                                     if (data.resultCode == 0) {
                                                         props.unfollow(user.id)
                                                     }
-                                                    props.toggleFollowing(false);
+                                                    props.toggleFollowing(false, user.id);
                                                 });
                                             }}> unfollow </button> :
-                                    <button disabled={props.followingInProgress} className={classes.buttons + " " + classes.followButton}
+                                    <button disabled={props.followingInProgress.some(id => id === user.id)} className={classes.buttons + " " + classes.followButton}
                                             onClick={() => {
-                                                props.toggleFollowing(true);
+                                                props.toggleFollowing(true, user.id);
                                                 usersAPI.followUser(user.id).then(data => {
                                                     if (data.resultCode == 0) {
                                                         props.follow(user.id)
                                                     }
-                                                    props.toggleFollowing(false);
+                                                    props.toggleFollowing(false, user.id);
                                                 });
 
                                             }}> follow </button>}
