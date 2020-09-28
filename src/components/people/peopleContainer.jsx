@@ -6,7 +6,7 @@ import {
     setUsers,
     toggleFetch,
     unfollow,
-    toggleFollowing,
+    toggleFollowing, getUsersThunkCreator,
 } from "../../Redux/peopleReducer";
 import React from "react";
 import People from "./people";
@@ -15,12 +15,13 @@ import {usersAPI} from "../../API/api";
 class PeopleContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toggleFetch(false)
-        usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
-            this.props.toggleFetch(true)
-            this.props.setUsers(data.items)
-            this.props.setTotalPeopleCount(data.totalCount)
-        });
+        this.props.getUsersThunkCreator()
+        // this.props.toggleFetch(false)
+        // usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
+        //     this.props.toggleFetch(true)
+        //     this.props.setUsers(data.items)
+        //     this.props.setTotalPeopleCount(data.totalCount)
+        // });
     }
 
     onPageChanged = (page) => {
@@ -103,5 +104,6 @@ export default connect(mapStateToProps, {
     changePage,
     toggleFetch,
     setTotalPeopleCount: setPeopleCount,
-    toggleFollowing
+    toggleFollowing,
+    getUsersThunkCreator
 })(PeopleContainer)
