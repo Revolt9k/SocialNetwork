@@ -1,12 +1,15 @@
 import {connect} from "react-redux";
 import {
-    changePage,
     follow,
-    setPeopleCount,
-    setUsers,
-    toggleFetch,
     unfollow,
-    toggleFollowing, getUsersThunkCreator,
+    changePage,
+    followSuccess,
+    // setPeopleCount,
+    // setUsers,
+    // toggleFetch,
+    unfollowSuccess,
+    toggleFollowing,
+    getUsers,
 } from "../../Redux/peopleReducer";
 import React from "react";
 import People from "./people";
@@ -15,7 +18,8 @@ import {usersAPI} from "../../API/api";
 class PeopleContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsersThunkCreator()
+        this.props.getUsers(this.props.pageSize, this.props.currentPage)
+
         // this.props.toggleFetch(false)
         // usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
         //     this.props.toggleFetch(true)
@@ -25,12 +29,15 @@ class PeopleContainer extends React.Component {
     }
 
     onPageChanged = (page) => {
-        this.props.toggleFetch(false)
+
+        this.props.getUsers(this.props.pageSize, page)
         this.props.changePage(page)
-        usersAPI.getUsers(this.props.pageSize, page).then(data => {
-            this.props.toggleFetch(true)
-            this.props.setUsers(data.items)
-        });
+
+        // this.props.toggleFetch(false)
+        // usersAPI.getUsers(this.props.pageSize, page).then(data => {
+        //     this.props.toggleFetch(true)
+        //     this.props.setUsers(data.items)
+        // });
     }
 
 
@@ -53,7 +60,7 @@ class PeopleContainer extends React.Component {
                        unfollow={this.props.unfollow}
                        isFetching={this.props.isFetching}
                        toggleFetch={this.props.toggleFetch}
-                       toggleFollowing={this.props.toggleFollowing}
+                       // toggleFollowing={this.props.toggleFollowing}
                        followingInProgress={this.props.followingInProgress}
 
         />
@@ -100,10 +107,12 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
+    followSuccess,
+    unfollowSuccess,
+    // setUsers,
     changePage,
-    toggleFetch,
-    setTotalPeopleCount: setPeopleCount,
+    // toggleFetch,
+    // setTotalPeopleCount: setPeopleCount,
     toggleFollowing,
-    getUsersThunkCreator
+    getUsers: getUsers,
 })(PeopleContainer)

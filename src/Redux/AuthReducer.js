@@ -1,3 +1,6 @@
+import {authAPI, usersAPI} from "../API/api";
+import {toggleFollowing, unfollowSuccess} from "./peopleReducer";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 let initialState = {
@@ -28,5 +31,18 @@ export const setAuthUserData = (userId, email, login) => ({
         userId, email, login
     }
 })
+
+
+
+export const authThunk = (userId) => {
+    return (dispatch) => {
+        authAPI.auth().then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data;
+                dispatch(setAuthUserData(id, email, login));
+            }
+        });
+    }
+}
 
 export default authReducer

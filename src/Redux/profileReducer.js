@@ -1,3 +1,7 @@
+import {usersAPI} from "../API/api";
+import {setPeopleCount, setUsers, toggleFetch} from "./peopleReducer";
+import * as axios from "axios";
+
 const ADD_POST = 'addPost';
 const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
@@ -100,5 +104,17 @@ export const onPostChange = (text) => ({type: CHANGE_POST, text: text})
 export const removePost = () => ({type: REMOVE_POST})
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+
+export const showCurrentUser = (userId) => {
+    return (dispatch) => {
+        debugger
+        if(!userId) {
+            userId = 11651
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
+            dispatch(setUserProfile(response.data))
+        });
+    }
+}
 
 export default profileReducer

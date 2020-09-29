@@ -99,9 +99,9 @@ const peopleReducer = (state = initialState, action) => {
 
 }
 
-export const follow = (userId) => ({type: FOLLOW, userId})
+export const followSuccess = (userId) => ({type: FOLLOW, userId})
 
-export const unfollow = (userId) => ({type: UNFOLLOW, userId})
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 
 export const setUsers = (newUserList) => ({type: SET_USERS, newUserList})
 
@@ -113,13 +113,37 @@ export const toggleFetch = (isFetching) => ({type: TOGGLE_FETCH, isFetching})
 
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING, isFetching, userId})
 
-export const getUsersThunkCreator = (pageSize, currentPage) => {
+export const getUsers = (pageSize, currentPage) => {
     return (dispatch) => {
         dispatch(toggleFetch(false))
         usersAPI.getUsers(pageSize, currentPage).then(data => {
             dispatch(toggleFetch(true))
             dispatch(setUsers(data.items))
             dispatch(setPeopleCount(data.totalCount))
+        });
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, userId));
+        usersAPI.unfollowUser(userId).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(unfollowSuccess(userId))
+            }
+            dispatch(toggleFollowing(false, userId));
+        });
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, userId));
+        usersAPI.followUser(userId).then(data => {
+            if (data.resultCode == 0) {
+                dispatch(followSuccess(userId))
+            }
+            dispatch(toggleFollowing(false, userId));
         });
     }
 }
