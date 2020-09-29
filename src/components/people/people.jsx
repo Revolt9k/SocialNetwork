@@ -3,7 +3,6 @@ import classes from './people.module.css';
 import userDeafaultAva from "../../../src/assets/images/noava.jpg"
 import Loader from "../../assets/common/loader";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../API/api";
 
 const People = (props) => {
 
@@ -34,7 +33,6 @@ const People = (props) => {
 
                 {props.isFetching === true ? <Loader isFetching/> : null}
 
-
                 {props.peopleList.map((user) => <div key={user.id}>
                     <div className={classes.container}>
                         <div>
@@ -45,29 +43,16 @@ const People = (props) => {
                             <div>
                                 {user.followed ?
                                     <button disabled={props.followingInProgress
-                                        .some(id => id === user.id)} className={classes.buttons + " " + classes.unfollowButton}
+                                        .some(id => id === user.id)}
+                                            className={classes.buttons + " " + classes.unfollowButton}
                                             onClick={() => {
                                                 props.unfollow(user.id)
-                                                // props.toggleFollowing(true, user.id);
-                                                // usersAPI.unfollowUser(user.id).then(data => {
-                                                //     if (data.resultCode == 0) {
-                                                //         props.unfollow(user.id)
-                                                //     }
-                                                //     props.toggleFollowing(false, user.id);
-                                                // });
                                             }}> unfollow </button> :
                                     <button disabled={props.followingInProgress
-                                        .some(id => id === user.id)} className={classes.buttons + " " + classes.followButton}
+                                        .some(id => id === user.id)}
+                                            className={classes.buttons + " " + classes.followButton}
                                             onClick={() => {
                                                 props.follow(user.id)
-                                                // props.toggleFollowing(true, user.id);
-                                                // usersAPI.followUser(user.id).then(data => {
-                                                //     if (data.resultCode == 0) {
-                                                //         props.follow(user.id)
-                                                //     }
-                                                //     props.toggleFollowing(false, user.id);
-                                                // });
-
                                             }}> follow </button>}
                             </div>
                         </div>

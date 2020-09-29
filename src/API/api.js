@@ -14,7 +14,7 @@ export const usersAPI = {
             return response.data
         })
     },
-    followUser(id)  {
+    followUser(id) {
         return instance.post(`follow/${id}`, {}, {}).then(response => {
             return response.data
         })
@@ -31,9 +31,7 @@ export const usersAPI = {
 
 export const authAPI = {
     auth() {
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        }).then(response => response.data)
+        return instance.get(`auth/me`, {}).then(response => response.data)
     }
 }
 

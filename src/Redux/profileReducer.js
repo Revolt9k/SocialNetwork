@@ -1,5 +1,3 @@
-import {usersAPI} from "../API/api";
-import {setPeopleCount, setUsers, toggleFetch} from "./peopleReducer";
 import * as axios from "axios";
 
 const ADD_POST = 'addPost';
@@ -105,7 +103,7 @@ export const removePost = () => ({type: REMOVE_POST})
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
-export const showCurrentUser = (userId) => {
+export const getCurrentProfile = (userId) => {
     return (dispatch) => {
         debugger
         if(!userId) {

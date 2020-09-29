@@ -1,5 +1,4 @@
-import {authAPI, usersAPI} from "../API/api";
-import {toggleFollowing, unfollowSuccess} from "./peopleReducer";
+import {authAPI} from "../API/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 

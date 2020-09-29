@@ -4,28 +4,19 @@ import {
     unfollow,
     changePage,
     followSuccess,
-    // setPeopleCount,
-    // setUsers,
-    // toggleFetch,
     unfollowSuccess,
     toggleFollowing,
     getUsers,
 } from "../../Redux/peopleReducer";
 import React from "react";
 import People from "./people";
-import {usersAPI} from "../../API/api";
 
 class PeopleContainer extends React.Component {
 
     componentDidMount() {
+
         this.props.getUsers(this.props.pageSize, this.props.currentPage)
 
-        // this.props.toggleFetch(false)
-        // usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then(data => {
-        //     this.props.toggleFetch(true)
-        //     this.props.setUsers(data.items)
-        //     this.props.setTotalPeopleCount(data.totalCount)
-        // });
     }
 
     onPageChanged = (page) => {
@@ -33,11 +24,6 @@ class PeopleContainer extends React.Component {
         this.props.getUsers(this.props.pageSize, page)
         this.props.changePage(page)
 
-        // this.props.toggleFetch(false)
-        // usersAPI.getUsers(this.props.pageSize, page).then(data => {
-        //     this.props.toggleFetch(true)
-        //     this.props.setUsers(data.items)
-        // });
     }
 
 
@@ -79,40 +65,13 @@ let mapStateToProps = (state) => {
 
 }
 
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId))
-//         },
-//         setusers: (newUserList) => {
-//             dispatch(setUsersAC(newUserList))
-//         },
-//         changePage: (page) => {
-//             dispatch(changePageAC(page))
-//         },
-//         setTotalPeopleCount: (totalUserCount) => {
-//             dispatch(setPeopleCountAC(totalUserCount))
-//         },
-//         toggleFetch: (isFetching) => {
-//             dispatch(toggleFetchAC(isFetching))
-//         }
-//     }
-// }
-//
-
 
 export default connect(mapStateToProps, {
     follow,
     unfollow,
     followSuccess,
     unfollowSuccess,
-    // setUsers,
     changePage,
-    // toggleFetch,
-    // setTotalPeopleCount: setPeopleCount,
     toggleFollowing,
-    getUsers: getUsers,
+    getUsers,
 })(PeopleContainer)

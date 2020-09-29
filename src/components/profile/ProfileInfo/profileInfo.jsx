@@ -20,22 +20,6 @@ const ProfileInfo = (props) => {
             </div>
             <div className={classes.row + " " + "row"}>
                 <div className={classes.key + " " + 'col-xs-6'}>
-                    Age:
-                </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
-
-                </div>
-            </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
-                    From:
-                </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
-
-                </div>
-            </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
                     Looking for a job:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
