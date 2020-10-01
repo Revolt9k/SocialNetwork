@@ -1,5 +1,4 @@
 import * as axios from "axios";
-
 const ADD_POST = 'addPost';
 const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
@@ -105,7 +104,6 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export const getCurrentProfile = (userId) => {
     return (dispatch) => {
-        debugger
         if(!userId) {
             userId = 11651
         }

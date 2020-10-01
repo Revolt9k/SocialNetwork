@@ -30,8 +30,6 @@ const Dialogs = (props) => {
         props.onMessageChange(text)
     }
 
-    if(!props.isAuth) return <Redirect to={"/login"} />
-
     return <div className={classes.content}>
         <div className={classes.row + " " + "row"}>
             <div className={classes.dialogs + " " + classes.col + " " + 'col-xs-4'}>
