@@ -10,6 +10,8 @@ import {
 } from "../../Redux/peopleReducer";
 import React from "react";
 import People from "./people";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../HighOrderComponents/withAuthRedirect";
 
 class PeopleContainer extends React.Component {
 
@@ -66,12 +68,9 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    followSuccess,
-    unfollowSuccess,
-    changePage,
-    toggleFollowing,
-    getUsers,
-})(PeopleContainer)
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {
+    follow,    unfollow,    followSuccess,    unfollowSuccess,
+    changePage,    toggleFollowing,    getUsers, })
+)(PeopleContainer)
