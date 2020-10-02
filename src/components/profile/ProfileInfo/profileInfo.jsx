@@ -2,7 +2,7 @@ import React from "react";
 import classes from './profileInfo.module.css';
 import noava from "../../../assets/images/noava.jpg"
 import Loader from "../../../assets/common/loader";
-import ProfileStatusContainer from "./ProfileStatusContainer";
+import ProfileStatus from "./ProfileStatus.jsx";
 
 const ProfileInfo = (props) => {
     if(!props.profile) {
@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
                     Status:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    <ProfileStatusContainer />
+                    <ProfileStatus status={"sdasd"}/>
                 </div>
             </div>
             <div className={classes.row + " " + "row"}>
