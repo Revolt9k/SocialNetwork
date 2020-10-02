@@ -3,6 +3,7 @@ const ADD_POST = 'addPost';
 const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const CHANGE_STATUS = 'CHANGE_STATUS'
 
 let initialState = {
     postsData: [
@@ -50,7 +51,8 @@ let initialState = {
         }
     ],
     newPostTextValue: "",
-    profile: null
+    profile: null,
+    status: ""
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -89,6 +91,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE : {
             return {...state, profile: action.profile}
         }
+        case CHANGE_STATUS : {
+            return {...state, status: action.newStatus}
+        }
         default :
             return state;
     }
@@ -112,5 +117,7 @@ export const getCurrentProfile = (userId) => {
         });
     }
 }
+
+export const onStatusChange = (newStatus) => ({type: CHANGE_STATUS, newStatus})
 
 export default profileReducer

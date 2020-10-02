@@ -6,11 +6,10 @@ import FriendsContainer from "./friends/friendsContainer";
 
 const Profile = (props) => {
 
-
     return <div className={classes.content}>
         <div className='row'>
             <div className='col-xs-3'>
-                <ProfileInfo profile={props.profile}/>
+                <ProfileInfo profile={props.profile} status={props.status}/>
                 <FriendsContainer />
             </div>
             <div className='col-xs-9'>
