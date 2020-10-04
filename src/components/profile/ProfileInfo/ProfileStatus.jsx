@@ -3,8 +3,10 @@ import classes from './ProfileStatus.module.css';
 
 class ProfileStatus extends React.Component {
 
+
     state = {
         editMode: false,
+        status: this.props.status
     }
 
     activateEditMode = () => {
@@ -16,6 +18,13 @@ class ProfileStatus extends React.Component {
     deactivateEditMode = () => {
         this.setState( {
             editMode: false,
+        });
+        this.props.updateStatus(this.state.status);
+    }
+
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
         })
     }
 
@@ -25,19 +34,18 @@ class ProfileStatus extends React.Component {
                 <div>
                     <span onDoubleClick={() => {
                         this.activateEditMode()
-                    }} className={classes.status}> {this.props.status}</span>
+                    }} className={classes.status}> {this.props.status || "-----"}</span>
                 </div>
             }
             {this.state.editMode &&
                 <div>
-                    <input autoFocus={true} onBlur={() => {
+                    <input onChange={this.onStatusChange} autoFocus={true} onBlur={() => {
                         this.deactivateEditMode()
-                    }} value={this.props.status} className={classes.input}/>
+                    }} value={this.state.status} className={classes.input}/>
                 </div>
             }
         </div>
     }
 
 }
-
 export default ProfileStatus

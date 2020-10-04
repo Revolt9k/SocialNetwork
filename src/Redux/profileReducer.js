@@ -1,8 +1,10 @@
 import * as axios from "axios";
+import {profileAPI} from "../API/api";
 const ADD_POST = 'addPost';
 const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 const CHANGE_STATUS = 'CHANGE_STATUS'
 
 let initialState = {
@@ -52,6 +54,7 @@ let initialState = {
     ],
     newPostTextValue: "",
     profile: null,
+    status: "",
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -90,6 +93,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_USER_PROFILE : {
             return {...state, profile: action.profile}
         }
+        case SET_STATUS : {
+            return {...state, status: action.status}
+        }
         default :
             return state;
     }
@@ -103,14 +109,32 @@ export const removePost = () => ({type: REMOVE_POST})
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
+export const setStatus = (status) => ({type: SET_STATUS, status})
+
 export const getCurrentProfile = (userId) => {
     return (dispatch) => {
-        if(!userId) {
-            userId = 11651
-        }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId).then(response => {
-            dispatch(setUserProfile(response.data))
+        profileAPI.getProfile(userId).then(data => {
+            dispatch(setUserProfile(data))
         });
+    }
+}
+
+// thunk
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId).then(response => {
+            dispatch(setStatus(response.data))
+        })
+    }
+}
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+         profileAPI.updateStatus(status).then(response => {
+             if (response.data.resultCode === 0) {
+                 dispatch(setStatus(status))
+             }
+        })
     }
 }
 

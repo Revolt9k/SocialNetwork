@@ -24,7 +24,8 @@ const ProfileInfo = (props) => {
                     Status:
                 </div>
                 <div className={classes.value + " " + 'col-xs-6'}>
-                    <ProfileStatus status={"sdasd"}/>
+                    <ProfileStatus status={props.status}
+                                   updateStatus={props.updateStatus}/>
                 </div>
             </div>
             <div className={classes.row + " " + "row"}>
