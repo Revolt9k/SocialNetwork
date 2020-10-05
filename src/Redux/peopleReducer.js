@@ -53,10 +53,10 @@ const peopleReducer = (state = initialState, action) => {
             }
         }
         case SET_TOTAL_PEOPLE_COUNT : {
-            if (action.peopleCount > 200) {
+            if (action.peopleCount > 400) {
                 return {
                     ...state,
-                    totalUserCount: 200
+                    totalUserCount: 400
                 }
             } else {
                 return {
