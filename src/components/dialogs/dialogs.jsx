@@ -2,22 +2,21 @@ import React from "react";
 import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
-import Redirect from "react-router-dom/es/Redirect";
 
 const Dialogs = (props) => {
 
     let mappedDialogs = props.dialogs
-        .map( (dialog) => <DialogsItem id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
+        .map( (dialog) => <DialogsItem key={dialog.id} id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
 
 
     let friendMessagies = props.messagies
         .filter(item =>  item.fromMe !== true)
-        .map ((message) => <Messagies friend={classes.friend} message={message.message} /> )
+        .map ((message) => <Messagies key={message.id} friend={classes.friend} message={message.message} /> )
 
 
     let myMessagies = props.messagies
         .filter(item =>  item.fromMe === true)
-        .map ((message) => <Messagies message={message.message} /> )
+        .map ((message) => <Messagies key={message.id} message={message.message} /> )
 
     let sendMessageRef = React.createRef()
 

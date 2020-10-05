@@ -31,6 +31,7 @@ const photosReducer = (state = initialState, action) => {
                 }
             } else {
                 alert("enter any URL")
+                return state
             }
 
         }

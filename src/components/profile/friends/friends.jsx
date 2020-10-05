@@ -7,7 +7,7 @@ const Friends = (props) => {
 
     let lastOnlineFriends = props.friendsList
         .filter(item => item.isOnline === true)
-        .map((friend) => <FriendItem avaUrl={friend.avaUrl} />)
+        .map((friend) => <FriendItem key={friend.id} avaUrl={friend.avaUrl} />)
         .splice(0,8)
 
 

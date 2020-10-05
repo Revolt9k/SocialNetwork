@@ -1,11 +1,9 @@
-import * as axios from "axios";
 import {profileAPI} from "../API/api";
 const ADD_POST = 'addPost';
 const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
-const CHANGE_STATUS = 'CHANGE_STATUS'
 
 let initialState = {
     postsData: [
@@ -61,7 +59,7 @@ const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST :
-            if (state.newPostTextValue != false) {
+            if (state.newPostTextValue !== false) {
                 let newPost = {
                     id: null,
                     message: state.newPostTextValue,
