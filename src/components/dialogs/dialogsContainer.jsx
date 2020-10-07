@@ -1,7 +1,6 @@
 import Dialogs from "./dialogs";
 import {onMessageChange, sendMessage} from "../../Redux/dialogsReducer";
 import {connect} from "react-redux";
-import React from "react";
 import {withAuthRedirect} from "../../HighOrderComponents/withAuthRedirect";
 import {compose} from "redux";
 

@@ -30,8 +30,8 @@ const Dialogs = (props) => {
     }
 
     return <div className={classes.content}>
-        <div className={classes.row + " " + "row"}>
-            <div className={classes.dialogs + " " + classes.col + " " + 'col-xs-4'}>
+        <div className={classes.row + " row"}>
+            <div className={classes.dialogs + " " + classes.col + ' col-xs-4'}>
 
                 {mappedDialogs}
 
@@ -39,7 +39,7 @@ const Dialogs = (props) => {
             <div className={"col-xs-1"}>
 
             </div>
-            <div className={classes.messagies + " " + classes.col + " " + 'col-xs-7'}>
+            <div className={classes.messagies + " " + classes.col + ' col-xs-7'}>
 
                 {friendMessagies}
                 {myMessagies}

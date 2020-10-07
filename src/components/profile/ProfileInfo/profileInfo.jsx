@@ -11,44 +11,44 @@ const ProfileInfo = (props) => {
     return <div>
         <img className={classes.contentImg} src={props.profile.photos.large || noava} alt=""/>
         <div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
+            <div className={classes.row + " row"}>
+                <div className={classes.key + ' col-xs-6'}>
                     Name:
                 </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
+                <div className={classes.value + ' col-xs-6'}>
                     {props.profile.fullName}
                 </div>
             </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
+            <div className={classes.row + " row"}>
+                <div className={classes.key + ' col-xs-6'}>
                     Status:
                 </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
+                <div className={classes.value + ' col-xs-6'}>
                     <ProfileStatus status={props.status}
                                    updateStatus={props.updateStatus}/>
                 </div>
             </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
+            <div className={classes.row + " row"}>
+                <div className={classes.key + ' col-xs-6'}>
                     Looking for a job:
                 </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
+                <div className={classes.value + 'col-xs-6'}>
                     {props.profile.lookingForAJobDescription}
                 </div>
             </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
+            <div className={classes.row + " row"}>
+                <div className={classes.key + ' col-xs-6'}>
                     Vk link:
                 </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
+                <div className={classes.value + ' col-xs-6'}>
                     {props.profile.contacts.vk}
                 </div>
             </div>
-            <div className={classes.row + " " + "row"}>
-                <div className={classes.key + " " + 'col-xs-6'}>
+            <div className={classes.row + " row"}>
+                <div className={classes.key + ' col-xs-6'}>
                     GitHub link:
                 </div>
-                <div className={classes.value + " " + 'col-xs-6'}>
+                <div className={classes.value + ' col-xs-6'}>
                     {props.profile.contacts.github}
                 </div>
             </div>

@@ -16,12 +16,12 @@ const People = (props) => {
 
     return <div className={classes.content}>
 
-        <div className={classes.row + " " + "row"}>
-            <div className={classes.col + " " + 'col-xs-2'}>
+        <div className={classes.row + " row"}>
+            <div className={classes.col + ' col-xs-2'}>
                 <div className={classes.pagetext}>Page:</div>
                 <div>
                     {pages.map(page => {
-                        return <button
+                        return <button key={page}
                             className={(props.currentPage === page && classes.selectButton) + " " + classes.pageButton}
                             onClick={() => {
                                 props.changePage(page)
@@ -29,7 +29,7 @@ const People = (props) => {
                     })}
                 </div>
             </div>
-            <div className={classes.col + " " + 'col-xs-10'}>
+            <div className={classes.col + ' col-xs-10'}>
 
                 {props.isFetching === true ? <Loader isFetching/> : null}
 
