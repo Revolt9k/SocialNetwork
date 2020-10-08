@@ -8,11 +8,15 @@
 }
 
 .login_input {
+    height: 40px;
+    border-radius: 5px;
     width: 200px;
     margin:  5px;
 }
 
 .pass_input {
+    height: 40px;
+    border-radius: 5px;
     width: 200px;
     margin:  5px;
 }
@@ -22,6 +26,15 @@
 }
 
 .login_button {
+    height: 40px;
+    background-color: #337ab7;
     width: 200px;
     margin-top: 5px;
+    transition: all .2s linear;
+    border-radius: 5px;
+    border: 1px solid blue;
+}
+
+.login_button:hover {
+    background-color: deepskyblue;
 }

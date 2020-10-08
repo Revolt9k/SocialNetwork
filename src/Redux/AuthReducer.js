@@ -15,7 +15,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                isAuth: true
             }
         }
 
@@ -54,7 +53,7 @@ export const loginThunkCreator = (email, password, rememberMe) => {
 export const logoutThunkCreator = () =>  {
     return (dispatch) => {
         authAPI.logout().then(data => {
-            if (data.resultCode === 0) {
+            if (data.data.resultCode === 0) {
                 dispatch(setAuthUserData(null, null, null, false));
             }
         });
