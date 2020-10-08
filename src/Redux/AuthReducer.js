@@ -4,9 +4,8 @@ const SET_USER_DATA = 'SET_USER_DATA';
 
 let initialState = {
     id: null,
-    email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -31,8 +30,6 @@ export const setAuthUserData = (userId, email, login) => ({
     }
 })
 
-
-
 export const authThunk = (userId) => {
     return (dispatch) => {
         authAPI.auth().then(data => {
@@ -43,5 +40,17 @@ export const authThunk = (userId) => {
         });
     }
 }
+
+// export const loginThunk = (email, password, rememberMe) => {
+//     return (dispatch) => {
+//         authAPI.login(email, password, rememberMe).then(data => {
+//             if (data.resultCode === 0) {
+//                 dispatch(setAuthUserData())
+//             }
+//         });
+//     }
+// }
+
+
 
 export default authReducer

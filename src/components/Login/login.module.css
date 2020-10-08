@@ -1,0 +1,27 @@
+.row {
+    min-height: 75vh;
+    background-color: #cef3f3;
+}
+
+.form {
+    text-align: center;
+}
+
+.login_input {
+    width: 200px;
+    margin:  5px;
+}
+
+.pass_input {
+    width: 200px;
+    margin:  5px;
+}
+
+.remember_input {
+
+}
+
+.login_button {
+    width: 200px;
+    margin-top: 5px;
+}

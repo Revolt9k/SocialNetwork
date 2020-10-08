@@ -9,7 +9,7 @@ import {Route} from "react-router-dom";
 import PeopleContainer from "./components/people/peopleContainer";
 import PhotosContainer from "./components/photos/photosContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
-import LoginPage from "./components/Login/Login";
+import Login from "./components/Login/Login";
 
 
 
@@ -25,7 +25,7 @@ const App = (props) => {
                     <Route path='/dialogs' render={ () => <DialogsContainer  /> } />
                     <Route path='/people' render={ () => <PeopleContainer /> } />
                     <Route path='/photos' render={ () => <PhotosContainer /> } />
-                    <Route path='/login' render={ () => <LoginPage /> } />
+                    <Route path='/login' render={ () => <Login /> } />
                     <Route path='/settings' component={Settings}/>
                 </div>
             </div>
