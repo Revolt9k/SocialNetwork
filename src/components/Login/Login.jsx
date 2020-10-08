@@ -1,16 +1,19 @@
 import React from "react";
 import classes from './login.module.css'
 import LoginReduxForm from "./LoginForm";
-import {authAPI} from "../../API/api";
+import {connect} from "react-redux";
+import {loginThunkCreator} from "../../Redux/AuthReducer";
+import {Redirect} from "react-router-dom";
 
 
 const Login = (props) => {
 
     const onSubmit = (formData) => {
-        authAPI.login(formData.email, formData.password, formData.rememberMe);
+        props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
+    }
 
-
-        console.log(authAPI.login(formData.email, formData.password, formData.rememberMe));
+    if(props.isAuth) {
+        return <Redirect to={"/profile"}/>
     }
 
 
@@ -20,15 +23,19 @@ const Login = (props) => {
         <div className={classes.form + ' col-xs-10'}>
             <div>
                 <h1>Login</h1>
-                <LoginReduxForm props={props} onSubmit={onSubmit}/>
+                <LoginReduxForm onSubmit={onSubmit}/>
             </div>
         </div>
         <div className='col-xs-1'>
         </div>
     </div>
+
 }
 
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
 
-export default Login
+export default connect(mapStateToProps, {loginThunkCreator}) (Login)
 
 
