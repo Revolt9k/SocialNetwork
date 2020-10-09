@@ -1,6 +1,5 @@
 import {profileAPI} from "../API/api";
 const ADD_POST = 'addPost';
-const CHANGE_POST = 'changePost';
 const REMOVE_POST = 'removePost';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
@@ -50,43 +49,32 @@ let initialState = {
             avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar1449.jpg"
         }
     ],
-    newPostTextValue: "",
     profile: null,
     status: "",
 }
 
 const profileReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case ADD_POST :
-            if (state.newPostTextValue !== false) {
-                let newPost = {
-                    id: null,
-                    message: state.newPostTextValue,
-                    author: "You",
-                    avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
+        case ADD_POST : {
+            let newPost = {
+                id: Date.now(),
+                message: action.post,
+                author: "You",
+                avaUrl: "https://cs16planet.ru/steam-avatars/images/avatar568.jpg"
 
-                };
-                return {
-                    ...state,
-                    postsData: [newPost, ...state.postsData],
-                    newPostTextValue: "",
-                }
-            } else {
-                alert("You must type some!")
-                return state
-            }
-        case CHANGE_POST : {
+            };
             return {
                 ...state,
-                newPostTextValue: action.text
+                postsData: [newPost, ...state.postsData],
             }
         }
         case REMOVE_POST : {
-            let stateCopy = {...state};
-            stateCopy.postsData = [...state.postsData]
-            stateCopy.postsData.splice(0, 1)
-            return stateCopy;
+            return {
+                ...state,
+                postsData: [...state.postsData.splice(1, 1000)]
+                // временное решение, потом убрать костыль
+            }
+
         }
         case SET_USER_PROFILE : {
             return {...state, profile: action.profile}
@@ -99,9 +87,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = () => ({type: ADD_POST})
-
-export const onPostChange = (text) => ({type: CHANGE_POST, text: text})
+export const addPost = (post) => ({type: ADD_POST, post: post})
 
 export const removePost = () => ({type: REMOVE_POST})
 

@@ -11,8 +11,7 @@ const DialogsForm = (props) => {
     }
 
 
-    return <Form
-        onSubmit={onSubmit}
+    return <Form onSubmit={onSubmit}
         render={({handleSubmit, form, submitting, pristine, values}) => (
             <form onSubmit={handleSubmit}>
                 <div className={classes.textzone}>
