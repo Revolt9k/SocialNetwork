@@ -15,8 +15,7 @@ const LoginForm = (props) => {
 
     return <Form
         onSubmit={onSubmit}
-        render={({handleSubmit, form, submitting, pristine, values}) => {
-            // submit = handleSubmit
+        render={({handleSubmit}) => {
             return (<div className={classes.row + ' row'}>
                     <div className='col-xs-1'>
                     </div>
@@ -55,40 +54,7 @@ const LoginForm = (props) => {
         }}
     />
 
-
-    // return <Form onSubmit={onSubmit}>
-    //     {() => (
-    //         <form onSubmit={handleSubmit}>
-    //             <div>
-    //                 <Field component={"input"}
-    //                        name={"email"}
-    //                        className={classes.login_input}
-    //                        placeholder={"login"}/>
-    //             </div>
-    //             <div>
-    //                 <Field component={"input"}
-    //                        name={"password"}
-    //                        className={classes.pass_input}
-    //                        placeholder={"Password"}/>
-    //             </div>
-    //             <div>
-    //                 <Field component={"input"}
-    //                        name={"rememberMe"}
-    //                        className={classes.remember_input}
-    //                        type="checkbox"/> Remember me
-    //             </div>
-    //             <div>
-    //                 <button className={classes.login_button}>Login</button>
-    //             </div>
-    //         </form>
-    //     )}
-    // </Form>
-
 }
 
-
-// const LoginReduxForm = reduxForm({
-//     form: 'login'
-// })(LoginForm)
 
 export default LoginForm
