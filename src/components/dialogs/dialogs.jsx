@@ -2,32 +2,23 @@ import React from "react";
 import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
+import DialogsForm from "./dialogsForm";
 
 const Dialogs = (props) => {
 
     let mappedDialogs = props.dialogs
-        .map( (dialog) => <DialogsItem key={dialog.id} id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl} /> );
+        .map((dialog) => <DialogsItem key={dialog.id} id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl}/>);
 
 
     let friendMessagies = props.messagies
-        .filter(item =>  item.fromMe !== true)
-        .map ((message) => <Messagies key={message.id} friend={classes.friend} message={message.message} /> )
+        .filter(item => item.fromMe !== true)
+        .map((message) => <Messagies key={message.id} friend={classes.friend} message={message.message}/>)
 
 
     let myMessagies = props.messagies
-        .filter(item =>  item.fromMe === true)
-        .map ((message) => <Messagies key={message.id} message={message.message} /> )
+        .filter(item => item.fromMe === true)
+        .map((message) => <Messagies key={message.id} message={message.message}/>)
 
-    let sendMessageRef = React.createRef()
-
-    let localSendMessage = () => {
-        props.localSendMesage()
-    }
-
-    let onMessageChange = () => {
-        let text = sendMessageRef.current.value
-        props.onMessageChange(text)
-    }
 
     return <div className={classes.content}>
         <div className={classes.row + " row"}>
@@ -44,8 +35,7 @@ const Dialogs = (props) => {
                 {friendMessagies}
                 {myMessagies}
 
-                <div className={classes.textzone}><textarea  onChange={onMessageChange} ref={sendMessageRef} className={classes.textarea} value={props.newMessageTextValue}/> <button  onClick={localSendMessage} className={classes.sendButton}>send</button> </div>
-
+                <DialogsForm SendMesage={props.SendMessage}/>
 
             </div>
 

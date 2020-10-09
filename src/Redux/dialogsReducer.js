@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'sendMessage';
-const CHANGE_MESSAGE = 'changeMessage';
 
 let initialState = {
     dialogsData: [
@@ -29,46 +28,35 @@ let initialState = {
             fromMe: true
         }
     ],
-    newMessageTextValue: "",
 }
 
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SEND_MESSAGE: {
-            if (state.newMessageTextValue.length !== 0) {
+            if (action.message.length !== 0) {
                 let sendedMessage = {
                     id: "i",
-                    message: state.newMessageTextValue,
+                    message: action.message,
                     imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2682.jpg",
                     fromMe: true
                 }
                 return {
                     ...state,
                     messagiesData: [...state.messagiesData, sendedMessage],
-                    newMessageTextValue: ""
                 }
 
             } else {
-                alert("Type some first")
                 return state
             }
 
         }
-        case CHANGE_MESSAGE : {
-            return {
-                ...state,
-                newMessageTextValue: action.text,
 
-            }
-        }
         default :
             return state;
     }
 
 }
-export const sendMessage = () => ({type: SEND_MESSAGE})
-
-export const onMessageChange = (text) => ({type: CHANGE_MESSAGE, text: text})
+export const sendMessage = (message) => ({type: SEND_MESSAGE, message: message})
 
 export default dialogsReducer

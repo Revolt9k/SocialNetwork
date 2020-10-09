@@ -1,5 +1,5 @@
 import Dialogs from "./dialogs";
-import {onMessageChange, sendMessage} from "../../Redux/dialogsReducer";
+import {sendMessage} from "../../Redux/dialogsReducer";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../HighOrderComponents/withAuthRedirect";
 import {compose} from "redux";
@@ -8,17 +8,13 @@ let mapStateToProps = (state) => {
     return {
         dialogs: state.dialogsPage.dialogsData,
         messagies: state.dialogsPage.messagiesData,
-        newMessageTextValue: state.dialogsPage.newMessageTextValue,
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onMessageChange: (text) => {
-            dispatch(onMessageChange(text))
-        },
-        localSendMesage: () => {
-            dispatch(sendMessage())
+        SendMessage: (message) => {
+            dispatch(sendMessage(message))
         }
     }
 }
