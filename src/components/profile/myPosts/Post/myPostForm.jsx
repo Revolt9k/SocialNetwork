@@ -18,7 +18,7 @@ const MyPostForm = (props) => {
                                  name="post"
                                  component="input"
                                  type="text"
-                                 placeholder="Your message here"
+                                 placeholder="Your post here"
                                  className={classes.textarea}
                              />
                              <button type="submit"
