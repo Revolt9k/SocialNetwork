@@ -38,3 +38,7 @@
 .login_button:hover {
     background-color: deepskyblue;
 }
+
+.advice {
+    margin-top: 50px;
+}

@@ -45,6 +45,15 @@ const LoginForm = (props) => {
                                     <button className={classes.login_button}>Login</button>
                                 </div>
                             </form>
+                            <div className={classes.advice}>
+                                <h3>For test you can use:</h3>
+                                <div>
+                                    Email: <b>Lexxxlexus@mail.ru</b>
+                                    <br/>
+                                    Password: <b>testtest</b>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div className='col-xs-1'>
