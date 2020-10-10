@@ -1,6 +1,8 @@
 import {Field, Form} from "react-final-form";
 import React from "react";
 import classes from '../myPosts.module.css'
+import {composeValidators, maxLengthCreator, required} from "../../../../utils/validators";
+import {Textarea} from "../../../../assets/FormsControl/Textarea";
 
 const MyPostForm = (props) => {
 
@@ -10,16 +12,18 @@ const MyPostForm = (props) => {
     }
 
 
+
     return <Form onSubmit={onSubmit}
                  render={({handleSubmit, form, submitting, pristine, values}) => (
                      <form onSubmit={handleSubmit}>
                          <div className={classes.textzone}>
                              <Field
                                  name="post"
-                                 component="input"
+                                 component={Textarea}
                                  type="text"
                                  placeholder="Your post here"
                                  className={classes.textarea}
+                                 validate={composeValidators(required, maxLengthCreator(10))}
                              />
                              <button type="submit"
                                      disabled={submitting || pristine}

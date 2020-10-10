@@ -1,8 +1,17 @@
 .status {
     width: 100%;
+    max-width: 200px;
+    height: auto;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: #1e083d 1px solid;
+    overflow: hidden;
+
 }
 
 
 .input {
     width: 100%;
 }
+
