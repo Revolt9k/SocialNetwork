@@ -45,6 +45,8 @@ export const loginThunkCreator = (email, password, rememberMe) => {
         authAPI.login(email, password, rememberMe).then(data => {
             if (data.data.resultCode === 0) {
                 dispatch(authThunk())
+            } else {
+                alert(data.data.messages)
             }
         });
     }
