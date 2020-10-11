@@ -2,6 +2,9 @@ import classes from "./login.module.css";
 import React from "react";
 import {Form, Field} from 'react-final-form'
 import {Redirect} from "react-router-dom";
+import {composeValidators, maxLengthCreator, required} from "../../utils/validators";
+import {Textarea} from "../../assets/FormsControl/Textarea";
+import {Input} from "../../assets/FormsControl/Input";
 
 const LoginForm = (props) => {
 
@@ -24,16 +27,22 @@ const LoginForm = (props) => {
                             <h1>Login</h1>
                             <form onSubmit={handleSubmit}>
                                 <div>
-                                    <Field component={"input"}
+                                    <Field component={Input}
                                            name={"email"}
                                            className={classes.login_input}
-                                           placeholder={"login"}/>
+                                           placeholder={"login"}
+                                           validate={required}
+                                    />
                                 </div>
                                 <div>
-                                    <Field component={"input"}
+                                    <Field component={Input}
                                            name={"password"}
                                            className={classes.pass_input}
-                                           placeholder={"Password"}/>
+                                           placeholder={"Password"}
+                                           type={"password"}
+                                           validate={required}
+                                    />
+
                                 </div>
                                 <div>
                                     <Field component={"input"}

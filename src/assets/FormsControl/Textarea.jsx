@@ -3,15 +3,19 @@ import classes from "../FormsControl/FormsControl.module.css"
 
 
 export const Textarea = ({input, meta, ...props}) => {
+
+const hasError = meta.touched && meta.error;
+
     return (
-        <div className={classes.textarea_wrapper + " " + classes.error} >
+        <div className={classes.textarea_wrapper + " " + (hasError ? classes.error : "")} >
             <div>
                 <textarea  {...input} {...props} />
             </div>
-            <div className={classes.errortext}>
-                "error"
-            </div>
+            {hasError && <div className={classes.errortext}>
+                {meta.error}
+            </div> }
         </div>
 
     )
 }
+
