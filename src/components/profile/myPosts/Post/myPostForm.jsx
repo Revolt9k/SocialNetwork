@@ -9,12 +9,14 @@ const MyPostForm = (props) => {
 
     const onSubmit = (values) => {
             props.addPost(values.post);
+            values.post = ""
     }
 
     return <Form onSubmit={onSubmit}
                  render={({handleSubmit, form, submitting, pristine, values}) => (
                      <form onSubmit={handleSubmit}>
                          <div className={classes.textzone}>
+
                              <Field
                                  name="post"
                                  component={Textarea}
@@ -22,8 +24,10 @@ const MyPostForm = (props) => {
                                  placeholder="Your post here"
                                  className={classes.textarea}
                                  validate={composeValidators(required, maxLengthCreator(100))}
+                                 initialValue={""}
                              />
-                             <button type={"submit"}
+                             <button
+                                    type={"submit"}
                                      disabled={submitting || pristine}
                                      className={classes.button + " " + classes.buttonAdd}>
                                  Send

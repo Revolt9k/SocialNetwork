@@ -2,8 +2,7 @@ import classes from "./login.module.css";
 import React from "react";
 import {Form, Field} from 'react-final-form'
 import {Redirect} from "react-router-dom";
-import {composeValidators, maxLengthCreator, required} from "../../utils/validators";
-import {Textarea} from "../../assets/FormsControl/Textarea";
+import {required} from "../../utils/validators";
 import {Input} from "../../assets/FormsControl/Input";
 
 const LoginForm = (props) => {
@@ -32,6 +31,7 @@ const LoginForm = (props) => {
                                            className={classes.login_input}
                                            placeholder={"login"}
                                            validate={required}
+                                           autoComplete="current-login"
                                     />
                                 </div>
                                 <div>
@@ -41,6 +41,7 @@ const LoginForm = (props) => {
                                            placeholder={"Password"}
                                            type={"password"}
                                            validate={required}
+                                           autoComplete="current-password"
                                     />
 
                                 </div>

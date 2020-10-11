@@ -10,14 +10,8 @@ const DialogsForm = (props) => {
 
 
     const onSubmit = (values) => {
-        if(values.message) {
             props.SendMesage(values.message);
-        }
-        clean(values)
-    }
-
-    const clean = (values) => {
-        values.message = ""
+            values.message = ""
     }
 
     return <Form onSubmit={onSubmit}
