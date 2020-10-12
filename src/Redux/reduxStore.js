@@ -6,6 +6,7 @@ import peopleReducer from "./peopleReducer";
 import photosReducer from "./photosReducer";
 import authReducer from "./AuthReducer";
 import thunkMiddleware from "redux-thunk"
+import AppReducer from "./AppReducer";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -14,6 +15,7 @@ let reducers = combineReducers({
     peoplePage: peopleReducer,
     photosPage: photosReducer,
     auth: authReducer,
+    app: AppReducer,
 });
 
 
