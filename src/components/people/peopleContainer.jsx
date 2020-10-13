@@ -12,6 +12,13 @@ import React from "react";
 import People from "./people";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../HighOrderComponents/withAuthRedirect";
+import {
+    getCurrentPage, getFollowingInProgressStatus,
+    getIsFetchingStatus,
+    getPageSize,
+    getPeople,
+    getTotalUserCount
+} from "../../selectors/peopleSelectors";
 
 class PeopleContainer extends React.Component {
 
@@ -57,12 +64,12 @@ class PeopleContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        peopleList: state.peoplePage.peopleList,
-        pageSize: state.peoplePage.pageSize,
-        totalUserCount: state.peoplePage.totalUserCount,
-        currentPage: state.peoplePage.currentPage,
-        isFetching: state.peoplePage.isFetching,
-        followingInProgress: state.peoplePage.followingInProgress
+        peopleList: getPeople(state),
+        pageSize: getPageSize(state),
+        totalUserCount: getTotalUserCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetchingStatus(state),
+        followingInProgress: getFollowingInProgressStatus(state),
     }
 
 }
