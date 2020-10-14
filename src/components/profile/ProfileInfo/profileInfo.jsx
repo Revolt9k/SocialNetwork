@@ -2,7 +2,7 @@ import React from "react";
 import classes from './profileInfo.module.css';
 import noava from "../../../assets/images/noava.jpg"
 import Loader from "../../../assets/common/loader";
-import ProfileStatus from "./ProfileStatus.jsx";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if(!props.profile) {
@@ -24,7 +24,7 @@ const ProfileInfo = (props) => {
                     Status:
                 </div>
                 <div className={classes.value + ' col-xs-6'}>
-                    <ProfileStatus status={props.status}
+                    <ProfileStatusWithHooks status={props.status}
                                    updateStatus={props.updateStatus}/>
                 </div>
             </div>
