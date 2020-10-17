@@ -8,6 +8,7 @@ import MyPostForm from "./Post/myPostForm";
 
 const MyPosts = (props) => {
 
+
     let mappedPosts = props.posts.map((post) => <Post key={post.id} className={classes.item} message={post.message} author={post.author}  avaUrl={post.avaUrl}/> )
 
     return <div>
