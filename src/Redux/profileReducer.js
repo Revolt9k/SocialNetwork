@@ -1,4 +1,5 @@
 import {profileAPI} from "../API/api";
+
 const ADD_POST = 'addPost';
 const REMOVE_POST = 'removePost';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -72,7 +73,6 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postsData: [...state.postsData.splice(1, 1000)]
-                // временное решение, потом убрать костыль
             }
 
         }
@@ -95,30 +95,21 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export const setStatus = (status) => ({type: SET_STATUS, status})
 
-export const getCurrentProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId).then(data => {
-            dispatch(setUserProfile(data))
-        });
-    }
+export const getCurrentProfile = (userId) => async (dispatch) => {
+    let data = await profileAPI.getProfile(userId)
+    dispatch(setUserProfile(data))
 }
 
 // thunk
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(response => {
-            dispatch(setStatus(response.data))
-        })
-    }
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response.data))
 }
 
-export const updateStatus = (status) => {
-    return (dispatch) => {
-         profileAPI.updateStatus(status).then(response => {
-             if (response.data.resultCode === 0) {
-                 dispatch(setStatus(status))
-             }
-        })
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
     }
 }
 
