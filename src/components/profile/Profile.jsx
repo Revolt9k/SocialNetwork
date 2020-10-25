@@ -11,7 +11,9 @@ const Profile = (props) => {
             <div className='col-xs-3'>
                 <ProfileInfo profile={props.profile}
                              status={props.status}
-                             updateStatus={props.updateStatus}/>
+                             updateStatus={props.updateStatus}
+                             isOwner={props.isOwner}
+                             savePhoto={props.savePhoto}/>
                 <FriendsContainer />
             </div>
             <div className='col-xs-9'>

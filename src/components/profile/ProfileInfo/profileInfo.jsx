@@ -5,12 +5,27 @@ import Loader from "../../../assets/common/loader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
+
+    const onMainPhotoChange = (event) => {
+        if(event.target.files.length) {
+            props.savePhoto(event.target.files[0])
+        }
+    }
+
     if(!props.profile) {
         return <Loader className={classes.loader}/>
     }
     return <div>
         <img className={classes.contentImg} src={props.profile.photos.large || noava} alt=""/>
         <div>
+            <div className={classes.row + " row"}>
+                <div className={' col-xs-12'}>
+                    {!props.isOwner ? <div className={classes.uploadPhoto}>
+                        <div className={classes.uploadText}>Upload&nbsp;ava!</div>
+                        <input onChange={onMainPhotoChange} type="file"/>
+                    </div>: null}
+                </div>
+            </div>
             <div className={classes.row + " row"}>
                 <div className={classes.key + ' col-xs-6'}>
                     Name:

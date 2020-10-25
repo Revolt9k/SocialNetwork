@@ -15,8 +15,18 @@
 
 .value {
     padding: 0;
-
     font-size: 18px;
+}
+
+.uploadPhoto {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.uploadText {
+    font-weight: 700;
+    font-size: 20px;
 }
 
 
