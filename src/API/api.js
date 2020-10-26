@@ -55,6 +55,26 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    updateProfileInfo() {
+        return instance.put('profile', {
+            userId: 11651,
+            AboutMe: "im good",
+            lookingForAJob: true,
+            lookingForAJobDescription: 'Focusing on it',
+            fullName: 'Konstatntin Alekseev',
+            contacts: {
+            Github: "https://github.com/Revolt9k",
+            Vk: "https://vk.com/id174840893",
+            //     // facebook: "test",
+            //     // instagram: "test",
+            //     // twitter: "test",
+            //     // website: "test",
+            //     // youtube: "test",
+            //     // mainLink: "test",
+            }
+            }
+        )
     }
 }
 
