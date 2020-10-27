@@ -31,11 +31,11 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Loader className={classes.loader}/>
     }
-    return <div>
+    return <div  >
         <div className={classes.imgWrapper}>
             <img className={classes.contentImg} src={props.profile.photos.large || noava} alt=""/>
         </div>
-        <div>
+        <div >
             <div className={classes.row + " row"}>
                 <div className={' col-xs-12'}>
                     {!props.isOwner ? <div className={classes.uploadPhoto}>
@@ -44,12 +44,14 @@ const ProfileInfo = (props) => {
                     </div> : null}
                 </div>
             </div>
+
             {!editMode ? <ProfileInfoTable profile={props.profile}
                                            status={props.status}
                                            updateStatus={props.updateStatus}
                                            activateEditMode={activateEditMode}/>
                 : <ProfileInfoForm profile={props.profile}
                                    status={props.status}
+                                   updateStatus={props.updateStatus}
                                    updateProfile={updateProfile}
                                    deactivateEditMode={deactivateEditMode}/>
             }

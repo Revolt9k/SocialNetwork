@@ -5,10 +5,15 @@ import ProfileInfoElement from "./ProfileInfoElement";
 
 
 const ProfileInfoTable = (props) => {
-    return <div>
+    return <div className={classes.container}>
         <ProfileInfoElement name={"Status:"} whatToShow={
-            <ProfileStatusWithHooks status={props.status}
-                                    updateStatus={props.updateStatus}/>}/>
+            <div>
+                <ProfileStatusWithHooks status={props.status}
+                                        updateStatus={props.updateStatus}/>
+                <div className={classes.note}>
+                    double click to edit!
+                </div>
+            </div>}/>
         <ProfileInfoElement name={"Name:"} whatToShow={props.profile.fullName}/>
         <ProfileInfoElement name={"About Me:"} whatToShow={props.profile.aboutMe}/>
         <ProfileInfoElement name={"Looking for a job:"} whatToShow={props.profile.lookingForAJobDescription}/>

@@ -1,3 +1,10 @@
+.container {
+    margin: 0 15px;
+    padding: 5px;
+    border-radius: 3px;
+    border: dotted 1px #337ab7;
+}
+
 .imgWrapper {
     margin: 0 auto;
     text-align: center;
@@ -14,9 +21,10 @@
 }
 
 .key {
-    padding: 0;
+    padding: 0 20px 0 0;
     font-weight: 700;
     font-size: 18px;
+    text-align: right;
 }
 
 .value {
@@ -25,12 +33,17 @@
 }
 
 .uploadPhoto {
+    border-radius: 3px;
+    padding: 5px;
+    border: dotted 1px #337ab7;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+
 }
 
 .uploadText {
+    padding: 0 20px;
     font-weight: 700;
     font-size: 20px;
 }
@@ -60,6 +73,10 @@
 .buttonRemove:hover {
     color: white;
     background-color: #0c1913
+}
+
+.note {
+    font-size: 10px;
 }
 
 @media (max-width: 1300px) {

@@ -11,7 +11,7 @@ const ProfileInfoForm = (props) => {
         props.deactivateEditMode()
     }
 
-    return <div>
+    return <div className={classes.container}>
         <Form
             onSubmit={onSubmit}
             initialValues={{
@@ -50,19 +50,30 @@ const ProfileInfoForm = (props) => {
                                 placeholder="lookingForAJobDescription"
                             />}/>
                         <ProfileInfoElement name={"Vk link:"} whatToShow={
-                            <Field
-                                name="Vk"
-                                component="input"
-                                type="text"
-                                placeholder="VK link"
-                            />}/>
+                            <div>
+                                <Field
+                                    name="Vk"
+                                    component="input"
+                                    type="text"
+                                    placeholder="VK link"
+                                />
+                                <div className={classes.note}>
+                                    link must be correct!
+                                </div>
+                            </div>}/>
                         <ProfileInfoElement name={"GitHub link:"} whatToShow={
-                            <Field
-                                name="Github"
-                                component="input"
-                                type="text"
-                                placeholder="VK link"
-                            />}/>
+                            <div>
+                                <Field
+                                    name="Github"
+                                    component="input"
+                                    type="text"
+                                    placeholder="VK link"
+                                />
+                                <div className={classes.note}>
+                                    link must be correct!
+                                </div>
+                            </div>
+                        }/>
                     </div>
                     <div>
                         {!props.isOwner && <ProfileInfoElement
