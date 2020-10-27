@@ -27,7 +27,7 @@ const authReducer = (state = initialState, action) => {
                 }
             } else {
                 if(action.captcha) {
-                    alert('wrong captcha')
+                    alert('Captcha is wrong!')
                     return {
                         ...state,
                         captcha: action.captcha,
