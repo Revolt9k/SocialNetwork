@@ -30,7 +30,7 @@ export const usersAPI = {
 
 export const profileAPI = {
     getProfile(userId) {
-        if(!userId) {
+        if (!userId) {
             userId = 11651
         }
         return instance.get('profile/' + userId, {}).then(response => {
@@ -38,7 +38,7 @@ export const profileAPI = {
         })
     },
     getStatus(userId) {
-        if(!userId) {
+        if (!userId) {
             userId = 11651
         }
         return instance.get('profile/status/' + userId)
@@ -56,23 +56,19 @@ export const profileAPI = {
             }
         })
     },
-    updateProfileInfo() {
+
+
+    updateProfileInfo(profileData) {
         return instance.put('profile', {
-            userId: 11651,
-            AboutMe: "im good",
-            lookingForAJob: true,
-            lookingForAJobDescription: 'Focusing on it',
-            fullName: 'Konstatntin Alekseev',
-            contacts: {
-            Github: "https://github.com/Revolt9k",
-            Vk: "https://vk.com/id174840893",
-            //     // facebook: "test",
-            //     // instagram: "test",
-            //     // twitter: "test",
-            //     // website: "test",
-            //     // youtube: "test",
-            //     // mainLink: "test",
-            }
+                userId: 11651,
+                AboutMe: profileData.AboutMe,
+                lookingForAJob: true,
+                lookingForAJobDescription: profileData.lookingForAJobDescription,
+                fullName: profileData.fullName,
+                contacts: {
+                    Github: profileData.Github,
+                    Vk: profileData.Vk,
+                }
             }
         )
     }

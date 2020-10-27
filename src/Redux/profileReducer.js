@@ -113,7 +113,6 @@ export const getStatus = (userId) => async (dispatch) => {
 }
 
 export const updateStatus = (status) => async (dispatch) => {
-    let updateProfileInfo = await profileAPI.updateProfileInfo()
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status))
@@ -125,6 +124,12 @@ export const savePhoto = (file) => async (dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
     }
+}
+
+export const getProfileInfo = (profileInfo) => async (dispatch) => {
+    await profileAPI.updateProfileInfo(profileInfo)
+    let data = await profileAPI.getProfile()
+    dispatch(setUserProfile(data))
 }
 
 export default profileReducer

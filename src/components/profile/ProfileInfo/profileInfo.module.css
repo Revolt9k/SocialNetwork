@@ -1,7 +1,13 @@
+.imgWrapper {
+    margin: 0 auto;
+    text-align: center;
+}
 .contentImg {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    max-width: 400px;
+    max-height: 400px;
 }
 .row {
     margin: 15px 0;
@@ -29,6 +35,32 @@
     font-size: 20px;
 }
 
+.button {
+    border-radius: 5px;
+    padding: 10px;
+    transition: all .2s linear;
+}
+
+.buttonAdd {
+    font-weight: 700;
+    background-color: #6ae2c8;
+}
+
+.buttonAdd:hover {
+    color: #1e083d;
+    background-color: #70f9df
+}
+
+.buttonRemove {
+    font-weight: 400;
+    color: #61dafb;
+    background-color: #1d3a34;
+}
+
+.buttonRemove:hover {
+    color: white;
+    background-color: #0c1913
+}
 
 @media (max-width: 1300px) {
     .key {

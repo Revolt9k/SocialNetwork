@@ -1,75 +1,58 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from './profileInfo.module.css';
 import noava from "../../../assets/images/noava.jpg"
 import Loader from "../../../assets/common/loader";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import ProfileInfoForm from "./ProfileInfoForm";
+import ProfileInfoTable from "./ProfileInfoTable";
+
 
 const ProfileInfo = (props) => {
 
+    let [editMode, setEditMode] = useState(false)
+
+    const activateEditMode = () => {
+        setEditMode(true)
+    }
+
+    const deactivateEditMode = () => {
+        setEditMode(false)
+    }
+    const updateProfile = (profileData) => {
+        props.setProfileInfo(profileData)
+
+    }
+
     const onMainPhotoChange = (event) => {
-        if(event.target.files.length) {
+        if (event.target.files.length) {
             props.savePhoto(event.target.files[0])
         }
     }
 
-    if(!props.profile) {
+    if (!props.profile) {
         return <Loader className={classes.loader}/>
     }
     return <div>
-        <img className={classes.contentImg} src={props.profile.photos.large || noava} alt=""/>
+        <div className={classes.imgWrapper}>
+            <img className={classes.contentImg} src={props.profile.photos.large || noava} alt=""/>
+        </div>
         <div>
             <div className={classes.row + " row"}>
                 <div className={' col-xs-12'}>
                     {!props.isOwner ? <div className={classes.uploadPhoto}>
                         <div className={classes.uploadText}>Upload&nbsp;ava!</div>
                         <input onChange={onMainPhotoChange} type="file"/>
-                    </div>: null}
+                    </div> : null}
                 </div>
             </div>
-            <div className={classes.row + " row"}>
-                <div className={classes.key + ' col-xs-6'}>
-                    Name:
-                </div>
-                <div className={classes.value + ' col-xs-6'}>
-                    {props.profile.fullName}
-                </div>
-            </div>
-            <div className={classes.row + " row"}>
-                <div className={classes.key + ' col-xs-6'}>
-                    Status:
-                </div>
-                <div className={classes.value + ' col-xs-6'}>
-                    <ProfileStatusWithHooks status={props.status}
-                                   updateStatus={props.updateStatus}/>
-                </div>
-            </div>
-            <div className={classes.row + " row"}>
-                <div className={classes.key + ' col-xs-6'}>
-                    Looking for a job:
-                </div>
-                <div className={classes.value + 'col-xs-6'}>
-                    {props.profile.lookingForAJobDescription}
-                </div>
-            </div>
-            <div className={classes.row + " row"}>
-                <div className={classes.key + ' col-xs-6'}>
-                    Vk link:
-                </div>
-                <div className={classes.value + ' col-xs-6'}>
-                    {props.profile.contacts.vk}
-                </div>
-            </div>
-            <div className={classes.row + " row"}>
-                <div className={classes.key + ' col-xs-6'}>
-                    GitHub link:
-                </div>
-                <div className={classes.value + ' col-xs-6'}>
-                    {props.profile.contacts.github}
-                </div>
-            </div>
-
-
-
+            {!editMode ? <ProfileInfoTable profile={props.profile}
+                                           status={props.status}
+                                           updateStatus={props.updateStatus}
+                                           activateEditMode={activateEditMode}/>
+                : <ProfileInfoForm profile={props.profile}
+                                   status={props.status}
+                                   updateProfile={updateProfile}
+                                   deactivateEditMode={deactivateEditMode}/>
+            }
         </div>
     </div>
 
