@@ -1,11 +1,13 @@
 import {authAPI} from "../API/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
+const SET_CAPTCHA = 'SET_CAPTCHA';
 
 let initialState = {
     id: null,
     login: null,
     isAuth: false,
+    captcha: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -16,6 +18,28 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             }
+        }
+        case SET_CAPTCHA: {
+            if (!state.captcha) {
+                return {
+                    ...state,
+                    captcha: action.captcha,
+                }
+            } else {
+                if(action.captcha) {
+                    alert('wrong captcha')
+                    return {
+                        ...state,
+                        captcha: action.captcha,
+                    }
+                } else {
+                    return {
+                        ...state,
+                        captcha: action.captcha,
+                    }
+                }
+            }
+
         }
 
         default :
@@ -29,6 +53,10 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
     }
 })
 
+export const setCaptcha = (captcha) => ({
+    type: SET_CAPTCHA, captcha
+})
+
 export const authThunk = () => async (dispatch) => {
 
     let data = await authAPI.auth()
@@ -38,12 +66,17 @@ export const authThunk = () => async (dispatch) => {
     }
 }
 
-export const loginThunkCreator = (email, password, rememberMe) => async (dispatch) => {
-    let data = await authAPI.login(email, password, rememberMe)
+export const loginThunkCreator = (email, password, rememberMe, captcha) => async (dispatch) => {
+    let data = await authAPI.login(email, password, rememberMe, captcha)
     if (data.data.resultCode === 0) {
         dispatch(authThunk())
     } else {
-        alert(data.data.messages)
+        if (data.data.messages == "Incorrect anti-bot symbols") {
+            let captchaData = await authAPI.getCaptcha()
+            dispatch(setCaptcha(captchaData.data.url))
+        } else {
+            alert(data.data.messages)
+        }
     }
 }
 
@@ -51,6 +84,7 @@ export const logoutThunkCreator = () => async (dispatch) => {
     let data = await authAPI.logout()
     if (data.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
+        dispatch(setCaptcha(null))
     }
 }
 

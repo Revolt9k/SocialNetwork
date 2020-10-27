@@ -8,12 +8,13 @@ import {Input} from "../../assets/FormsControl/Input";
 const LoginForm = (props) => {
 
     const onSubmit = (formData) => {
-        props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
+        props.loginThunkCreator(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (props.isAuth) {
         return <Redirect to={"/profile"}/>
     }
+
 
     return <Form
         onSubmit={onSubmit}
@@ -55,6 +56,21 @@ const LoginForm = (props) => {
                                     <button className={classes.login_button}>Login</button>
                                 </div>
                             </form>
+                            {(props.captcha) && <div>
+                                <div>
+                                    <Field component={Input}
+                                           name={"captcha"}
+                                           className={classes.pass_input}
+                                           placeholder={"captcha"}
+                                           type={"text"}
+                                           validate={required}
+                                           autoComplete="current-captcha"
+                                    />
+
+                                </div>
+                                <div className={classes.captcha}><img src={props.captcha} alt=""/></div>
+                            </div>
+                            }
                             <div className={classes.advice}>
                                 <h3>For test you can use:</h3>
                                 <div>
@@ -64,6 +80,7 @@ const LoginForm = (props) => {
                                 </div>
 
                             </div>
+
                         </div>
                     </div>
                     <div className='col-xs-1'>

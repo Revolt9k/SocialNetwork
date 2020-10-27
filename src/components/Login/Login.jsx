@@ -5,7 +5,8 @@ import LoginForm from "./LoginForm";
 
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captcha: state.auth.captcha
 })
 
 export default connect(mapStateToProps, {loginThunkCreator}) (LoginForm)
