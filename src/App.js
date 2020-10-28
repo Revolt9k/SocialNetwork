@@ -5,7 +5,7 @@ import HeaderContainer from "./components/header/HeaderContainer";
 import Nav from "./components/nav/Nav";
 import DialogsContainer from "./components/dialogs/dialogsContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
-import {withRouter, Route} from "react-router-dom";
+import {withRouter, Route, Switch} from "react-router-dom";
 import PeopleContainer from "./components/people/peopleContainer";
 import PhotosContainer from "./components/photos/photosContainer";
 import Login from "./components/Login/Login";
@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import {initialiseApp} from "./Redux/AppReducer";
 import {compose} from "redux";
 import Loader from "./assets/common/loader";
+import NotFound from "./assets/common/notFound";
 
 const Settings = React.lazy(() => import('./components/settings/settings'));
 
@@ -33,16 +34,16 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <Nav/>
                 <div className='main_content'>
-                    <Route exact path={'/'} render={() => <ProfileContainer/>}/>
-                    <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                    <Route path='/people' render={() => <PeopleContainer/>}/>
-                    <Route path='/photos' render={() => <PhotosContainer/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
-                    <Suspense fallback={<Loader/>}>
-                        <Route path='/settings' component={Settings}/>
-                    </Suspense>
-
+                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                        <Route path='/people' render={() => <PeopleContainer/>}/>
+                        <Route path='/photos' render={() => <PhotosContainer/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Suspense fallback={<Loader/>}>
+                            <Route path='/settings' component={Settings}/>
+                        </Suspense>
+                        <Route exact path={'/'} render={() => <ProfileContainer/>}/>
+                        <Route path={'*'} exact={true} render={() => <NotFound />}/>
                 </div>
             </div>
         );

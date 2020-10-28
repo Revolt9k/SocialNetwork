@@ -1,0 +1,17 @@
+.content{
+    padding: 20px;
+    background-color: #cef3f3;
+    text-align: center;
+    height: 78vh;
+    font-size: 40px;
+}
+
+.row {
+    margin: 0;
+}
+
+
+.col {
+    padding: 10px;
+}
+
