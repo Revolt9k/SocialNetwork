@@ -34,16 +34,16 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <Nav/>
                 <div className='main_content'>
+                    <Switch>
+                        <Route exact path='/' render={() => <ProfileContainer/>}/>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                         <Route path='/people' render={() => <PeopleContainer/>}/>
                         <Route path='/photos' render={() => <PhotosContainer/>}/>
                         <Route path='/login' render={() => <Login/>}/>
-                        <Suspense fallback={<Loader/>}>
-                            <Route path='/settings' component={Settings}/>
-                        </Suspense>
-                        <Route exact path={'/'} render={() => <ProfileContainer/>}/>
-                        <Route path={'*'} exact={true} render={() => <NotFound />}/>
+                        <Route path='/settings' component={Settings}/>
+                        <Route component={NotFound} />
+                    </Switch>
                 </div>
             </div>
         );
