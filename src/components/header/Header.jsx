@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 const Header = (props) => {
     return <div>
         <Navbar bg="primary" variant="light" className={classes.header}>
-            <Navbar.Brand href="#home" className={classes.inner}>
+            <Navbar.Brand href="/profile" className={classes.inner}>
                 <img
                     alt="My social network"
                     src={logo}
