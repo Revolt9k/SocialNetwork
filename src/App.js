@@ -13,9 +13,8 @@ import {connect} from "react-redux";
 import {initialiseApp} from "./Redux/AppReducer";
 import {compose} from "redux";
 import Loader from "./assets/common/loader";
+import Settings from "./components/settings/settings"
 import NotFound from "./assets/common/notFound";
-
-const Settings = React.lazy(() => import('./components/settings/settings'));
 
 
 class App extends React.Component {
@@ -41,7 +40,7 @@ class App extends React.Component {
                         <Route path='/people' render={() => <PeopleContainer/>}/>
                         <Route path='/photos' render={() => <PhotosContainer/>}/>
                         <Route path='/login' render={() => <Login/>}/>
-                        <Route path='/settings' component={Settings}/>
+                        <Route path='/settings' render={() => <Settings/>}/>
                         <Route component={NotFound} />
                     </Switch>
                 </div>
