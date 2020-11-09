@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, {Suspense} from 'react';
+import React from 'react';
 import './App.css';
 import HeaderContainer from "./components/header/HeaderContainer";
 import Nav from "./components/nav/Nav";

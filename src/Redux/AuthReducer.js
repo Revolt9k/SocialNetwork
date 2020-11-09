@@ -71,7 +71,7 @@ export const loginThunkCreator = (email, password, rememberMe, captcha) => async
     if (data.data.resultCode === 0) {
         dispatch(authThunk())
     } else {
-        if (data.data.messages == "Incorrect anti-bot symbols") {
+        if (data.data.messages[0] === "Incorrect anti-bot symbols") {
             let captchaData = await authAPI.getCaptcha()
             dispatch(setCaptcha(captchaData.data.url))
         } else {
