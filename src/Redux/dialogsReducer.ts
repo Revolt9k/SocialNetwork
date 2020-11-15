@@ -1,6 +1,25 @@
 const SEND_MESSAGE = 'sendMessage';
 
-let initialState = {
+type InitialStateType = {
+    dialogsData: Array<DialogsItemType>,
+    messagiesData: Array<MessagiesItemType>
+}
+
+export type DialogsItemType = {
+    id: number,
+    name: string,
+    imgUrl: string,
+}
+
+export type MessagiesItemType = {
+    date: number,
+    id: number,
+    message: string,
+    imgUrl: string,
+    fromMe?: boolean,
+}
+
+let initialState: InitialStateType = {
     dialogsData: [
         {id: 1, name: "Konstantin", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar1833.jpg"},
         {id: 2, name: "Anastasia", imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2713.jpg"},
@@ -41,11 +60,11 @@ let initialState = {
             message: "But now i can talk to you here :)",
             imgUrl: "https://cs16planet.ru/steam-avatars/images/avatar2826.jpg",
             fromMe: true
-        }
+        },
     ],
 }
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action: any) => {
 
     switch (action.type) {
         case SEND_MESSAGE: {
@@ -72,6 +91,6 @@ const dialogsReducer = (state = initialState, action) => {
     }
 
 }
-export const sendMessage = (message) => ({type: SEND_MESSAGE, message: message})
+export const sendMessage = (message: any) => ({type: SEND_MESSAGE, message: message})
 
 export default dialogsReducer

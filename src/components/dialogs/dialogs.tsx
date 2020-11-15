@@ -3,9 +3,17 @@ import classes from './dialogs.module.css';
 import DialogsItem from "./dialogsItem/dialogsItem";
 import Messagies from "./messagies/friendMessage/friendMessagies";
 import DialogsForm from "./dialogsForm";
+import {DialogsItemType, MessagiesItemType} from "../../Redux/dialogsReducer";
 
-const Dialogs = (props) => {
+type propsType = {
+    SendMessage: Function,
+    dialogs: Array<DialogsItemType>
+    dispatch: Function,
+    isAuth: boolean,
+    messagies: Array<MessagiesItemType>,
+}
 
+const Dialogs = (props: propsType) => {
     let mappedDialogs = props.dialogs
         .map((dialog) => <DialogsItem key={dialog.id} id={dialog.id} name={dialog.name} imgUrl={dialog.imgUrl}/>);
 

@@ -10,7 +10,7 @@ import PeopleContainer from "./components/people/peopleContainer";
 import PhotosContainer from "./components/photos/photosContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import {initialiseApp} from "./Redux/AppReducer";
+import {initialiseApp} from "./Redux/AppReducer.ts";
 import {compose} from "redux";
 import Loader from "./assets/common/loader";
 import Settings from "./components/settings/settings"

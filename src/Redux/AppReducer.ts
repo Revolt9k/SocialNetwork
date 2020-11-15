@@ -6,7 +6,7 @@ let initialState = {
     isInitialaised: false,
 }
 
-const AppReducer = (state = initialState, action) => {
+const AppReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case SET_INITIALISE: {
             return {
@@ -20,7 +20,7 @@ const AppReducer = (state = initialState, action) => {
 }
 export const initialiseSuccess = () => ({type: SET_INITIALISE})
 
-export const initialiseApp = () => (dispatch) => {
+export const initialiseApp = () => (dispatch: any) => {
     let promise = dispatch(authThunk());
     Promise.all([promise])
        .then(() => {
